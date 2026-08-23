@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Executive Wellness Club Toulouse | Centre de Longévité &amp; Performance</title>
+<meta name="description" content="Premier centre de prévention santé, performance et longévité de Toulouse. L'expertise suisse de la longévité au service des dirigeants et des professionnels exigeants.">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          navy: {
+            950: '#050b14',
+            900: '#0a1628',
+            800: '#0e2038',
+            700: '#14294a',
+            600: '#1c3357',
+            500: '#2a4770',
+          },
+          sage: {
+            700: '#354d40',
+            600: '#43604f',
+            500: '#59795f',
+            400: '#7c9885',
+            300: '#a3bcab',
+            100: '#e6ede8',
+          },
+          gold: {
+            600: '#a9873f',
+            500: '#c9a86a',
+            400: '#d9c08f',
+            300: '#e8d7ae',
+            100: '#f6efdd',
+          },
+          cream: '#faf8f2',
+        },
+        fontFamily: {
+          serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+          sans: ['"Jost"', 'system-ui', 'sans-serif'],
+        },
+      }
+    }
+  }
+</script>
+
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Jost', system-ui, sans-serif; background-color: #faf8f2; color: #0a1628; }
+  h1, h2, h3, h4, .font-serif-display { font-family: 'Cormorant Garamond', Georgia, serif; }
+
+  .tracking-widest-xl { letter-spacing: 0.25em; }
+
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .fade-in-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .gold-divider {
+    width: 64px;
+    height: 1px;
+    background: linear-gradient(90deg, #c9a86a, transparent);
+  }
+  .gold-divider.center {
+    background: #c9a86a;
+    width: 56px;
+    height: 2px;
+  }
+
+  ::selection { background: #c9a86a; color: #0a1628; }
+
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: #faf8f2; }
+  ::-webkit-scrollbar-thumb { background: #0a1628; border-radius: 6px; }
+
+  .noise-overlay {
+    background-image: radial-gradient(circle at 20% 20%, rgba(201,168,106,0.08), transparent 40%),
+                       radial-gradient(circle at 80% 60%, rgba(124,152,133,0.10), transparent 45%);
+  }
+
+  .card-hover {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+  }
+  .card-hover:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 48px -12px rgba(10, 22, 40, 0.18);
+  }
+
+  .tab-btn.active {
+    background-color: #0a1628;
+    color: #f6efdd;
+  }
+  .tab-btn.active .tab-icon-wrap {
+    background-color: #c9a86a;
+    color: #0a1628;
+  }
+
+  .program-panel { display: none; }
+  .program-panel.active { display: grid; }
+
+  .pill-badge {
+    letter-spacing: 0.18em;
+  }
+
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #c9a86a;
+  }
+
+  #mobile-menu {
+    transition: max-height 0.4s ease, opacity 0.3s ease;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+  }
+  #mobile-menu.open {
+    max-height: 480px;
+    opacity: 1;
+  }
+
+  .bg-hero-gradient {
+    background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(89,121,95,0.35), transparent 60%), linear-gradient(180deg, #050b14 0%, #0a1628 55%, #0e2038 100%);
+  }
+</style>
+</head>
+
+<body class="bg-cream text-navy-900 antialiased">
+
+<!-- ========================= HEADER / NAV ========================= -->
+<header id="site-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-500 bg-navy-950/95 backdrop-blur-sm border-b border-gold-500/10">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="flex items-center justify-between h-20 lg:h-24">
+
+      <!-- Logo -->
+      <a href="#accueil" class="flex items-center gap-3 group">
+        <span class="flex items-center justify-center w-9 h-9 rounded-full border border-gold-400/60 text-gold-400">
+          <i data-lucide="leaf" class="w-4 h-4"></i>
+        </span>
+        <span class="flex flex-col leading-none">
+          <span class="font-serif text-lg lg:text-xl tracking-wide text-cream">Executive Wellness Club</span>
+          <span class="text-[10px] tracking-widest-xl text-gold-400/80 uppercase mt-1">Toulouse</span>
+        </span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center gap-10 text-sm tracking-wide text-cream/80">
+        <a href="#concept" class="hover:text-gold-400 transition-colors duration-300">Concept</a>
+        <a href="#programme" class="hover:text-gold-400 transition-colors duration-300">Programme</a>
+        <a href="#tarifs" class="hover:text-gold-400 transition-colors duration-300">Tarifs</a>
+        <a href="#equipe" class="hover:text-gold-400 transition-colors duration-300">Équipe &amp; Médical</a>
+        <a href="#contact" class="hover:text-gold-400 transition-colors duration-300">Contact</a>
+      </nav>
+
+      <!-- CTA Desktop -->
+      <a href="#contact" class="hidden lg:inline-flex items-center gap-2 border border-gold-400 text-gold-300 hover:bg-gold-400 hover:text-navy-950 px-6 py-3 text-xs tracking-widest-xl uppercase transition-all duration-300">
+        Demander un entretien privé
+      </a>
+
+      <!-- Mobile Toggle -->
+      <button id="menu-toggle" aria-label="Ouvrir le menu" class="lg:hidden text-cream">
+        <i data-lucide="menu" id="icon-menu" class="w-7 h-7"></i>
+        <i data-lucide="x" id="icon-close" class="w-7 h-7 hidden"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="lg:hidden bg-navy-950 border-t border-gold-500/10">
+    <nav class="flex flex-col px-6 py-6 gap-5 text-cream/85 text-sm tracking-wide">
+      <a href="#concept" class="mobile-link py-1">Concept</a>
+      <a href="#programme" class="mobile-link py-1">Programme</a>
+      <a href="#tarifs" class="mobile-link py-1">Tarifs</a>
+      <a href="#equipe" class="mobile-link py-1">Équipe &amp; Médical</a>
+      <a href="#contact" class="mobile-link py-1">Contact</a>
+      <a href="#contact" class="mobile-link mt-2 inline-flex justify-center items-center border border-gold-400 text-gold-300 px-6 py-3 text-xs tracking-widest-xl uppercase">
+        Demander un entretien privé
+      </a>
+    </nav>
+  </div>
+</header>
+
+<!-- ========================= HERO ========================= -->
+<section id="accueil" class="relative min-h-screen flex items-center bg-hero-gradient noise-overlay overflow-hidden pt-32 pb-24">
+  <!-- decorative rings -->
+  <div class="absolute -right-32 top-1/4 w-[520px] h-[520px] rounded-full border border-gold-400/10 hidden lg:block"></div>
+  <div class="absolute -right-10 top-1/3 w-[360px] h-[360px] rounded-full border border-sage-400/10 hidden lg:block"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-10 w-full">
+    <div class="max-w-3xl fade-in-up">
+      <div class="flex items-center gap-3 mb-8">
+        <span class="gold-divider"></span>
+        <span class="text-gold-400 text-xs tracking-widest-xl uppercase">Toulouse — Depuis le concept suisse de la longévité</span>
+      </div>
+
+      <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-[1.08] text-cream font-medium">
+        Vivre plus longtemps,<br>
+        en meilleure santé,<br>
+        <span class="italic text-gold-300">avec davantage d'énergie.</span>
+      </h1>
+
+      <p class="mt-8 text-lg lg:text-xl text-cream/70 max-w-xl leading-relaxed font-light">
+        L'expertise suisse de la longévité au service des dirigeants et des professionnels exigeants. Une médecine proactive, mesurée et personnalisée — pour optimiser chaque année de votre vie.
+      </p>
+
+      <div class="mt-12 flex flex-col sm:flex-row gap-4">
+        <a href="#programme" class="inline-flex items-center justify-center gap-2 bg-gold-500 text-navy-950 hover:bg-gold-400 px-8 py-4 text-xs tracking-widest-xl uppercase font-medium transition-all duration-300">
+          Découvrir le programme Executive
+        </a>
+        <a href="#contact" class="inline-flex items-center justify-center gap-2 border border-cream/30 text-cream hover:border-gold-400 hover:text-gold-300 px-8 py-4 text-xs tracking-widest-xl uppercase transition-all duration-300">
+          Prendre rendez-vous
+        </a>
+      </div>
+
+      <!-- Reassurance strip -->
+      <div class="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 border-t border-cream/10 pt-8">
+        <div class="flex items-center gap-3">
+          <i data-lucide="stethoscope" class="w-5 h-5 text-sage-400 shrink-0"></i>
+          <span class="text-xs sm:text-sm text-cream/70 leading-tight">Suivi<br class="sm:hidden"> médical</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <i data-lucide="cpu" class="w-5 h-5 text-sage-400 shrink-0"></i>
+          <span class="text-xs sm:text-sm text-cream/70 leading-tight">Technologies<br class="sm:hidden"> de pointe</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <i data-lucide="fingerprint" class="w-5 h-5 text-sage-400 shrink-0"></i>
+          <span class="text-xs sm:text-sm text-cream/70 leading-tight">100%<br class="sm:hidden"> personnalisé</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <i data-lucide="lock" class="w-5 h-5 text-sage-400 shrink-0"></i>
+          <span class="text-xs sm:text-sm text-cream/70 leading-tight">Confidentialité<br class="sm:hidden"> absolue</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2 text-cream/40">
+    <span class="text-[10px] tracking-widest-xl uppercase">Découvrir</span>
+    <i data-lucide="chevron-down" class="w-4 h-4 animate-bounce"></i>
+  </div>
+</section>
+
+<!-- ========================= CONCEPT & VISION ========================= -->
+<section id="concept" class="py-28 lg:py-36 bg-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+    <div class="max-w-2xl mx-auto text-center fade-in-up">
+      <div class="flex items-center justify-center gap-3 mb-6">
+        <span class="gold-divider center"></span>
+      </div>
+      <span class="text-sage-600 text-xs tracking-widest-xl uppercase">Pourquoi nous ?</span>
+      <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl mt-4 text-navy-900 font-medium">
+        D'une médecine réactive à une <span class="italic text-sage-600">santé proactive</span>
+      </h2>
+      <p class="mt-6 text-navy-700/70 leading-relaxed font-light">
+        La médecine traditionnelle attend l'apparition de la maladie pour agir. Notre approche consiste à mesurer, comprendre et optimiser vos marqueurs de santé en amont — pour ralentir le vieillissement biologique et prolonger votre capital énergie.
+      </p>
+    </div>
+
+    <!-- Reactive vs Proactive comparison -->
+    <div class="mt-16 grid md:grid-cols-2 gap-6 fade-in-up">
+      <div class="border border-navy-900/10 p-8 lg:p-10 bg-white/40">
+        <div class="flex items-center gap-3 mb-5">
+          <i data-lucide="activity" class="w-5 h-5 text-navy-900/40"></i>
+          <h3 class="font-serif text-2xl text-navy-900/60">Médecine réactive</h3>
+        </div>
+        <ul class="space-y-3 text-sm text-navy-700/60 font-light">
+          <li class="flex gap-3"><i data-lucide="x" class="w-4 h-4 mt-0.5 shrink-0 text-navy-900/30"></i>On attend l'apparition des symptômes</li>
+          <li class="flex gap-3"><i data-lucide="x" class="w-4 h-4 mt-0.5 shrink-0 text-navy-900/30"></i>Bilans standards, une fois par an</li>
+          <li class="flex gap-3"><i data-lucide="x" class="w-4 h-4 mt-0.5 shrink-0 text-navy-900/30"></i>Traitement du diagnostic, non du terrain</li>
+          <li class="flex gap-3"><i data-lucide="x" class="w-4 h-4 mt-0.5 shrink-0 text-navy-900/30"></i>Aucune optimisation de la performance</li>
+        </ul>
+      </div>
+
+      <div class="border border-gold-400/40 p-8 lg:p-10 bg-navy-950 text-cream relative overflow-hidden">
+        <div class="absolute -right-8 -top-8 w-32 h-32 rounded-full border border-gold-400/10"></div>
+        <div class="flex items-center gap-3 mb-5 relative">
+          <i data-lucide="sparkles" class="w-5 h-5 text-gold-400"></i>
+          <h3 class="font-serif text-2xl text-gold-300">Santé proactive</h3>
+        </div>
+        <ul class="space-y-3 text-sm text-cream/75 font-light relative">
+          <li class="flex gap-3"><i data-lucide="check" class="w-4 h-4 mt-0.5 shrink-0 text-sage-400"></i>Biométrie continue et marqueurs biologiques suivis</li>
+          <li class="flex gap-3"><i data-lucide="check" class="w-4 h-4 mt-0.5 shrink-0 text-sage-400"></i>Prévention ciblée avant l'apparition du risque</li>
+          <li class="flex gap-3"><i data-lucide="check" class="w-4 h-4 mt-0.5 shrink-0 text-sage-400"></i>Programme personnalisé et évolutif</li>
+          <li class="flex gap-3"><i data-lucide="check" class="w-4 h-4 mt-0.5 shrink-0 text-sage-400"></i>Optimisation de l'énergie et de la performance cognitive</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 3 piliers -->
+    <div class="mt-24 grid md:grid-cols-3 gap-8 lg:gap-10">
+      <div class="fade-in-up card-hover bg-white border border-navy-900/5 p-8 lg:p-10">
+        <div class="w-14 h-14 rounded-full bg-sage-100 flex items-center justify-center mb-6">
+          <i data-lucide="heart-pulse" class="w-6 h-6 text-sage-600"></i>
+        </div>
+        <h3 class="font-serif text-2xl text-navy-900 mb-3">Biométrie avancée</h3>
+        <p class="text-sm text-navy-700/60 leading-relaxed font-light">Mesure précise et continue de vos indicateurs vitaux : composition corporelle, variabilité cardiaque, qualité du sommeil, tension artérielle — la donnée au service de la décision médicale.</p>
+      </div>
+      <div class="fade-in-up card-hover bg-white border border-navy-900/5 p-8 lg:p-10">
+        <div class="w-14 h-14 rounded-full bg-sage-100 flex items-center justify-center mb-6">
+          <i data-lucide="shield-plus" class="w-6 h-6 text-sage-600"></i>
+        </div>
+        <h3 class="font-serif text-2xl text-navy-900 mb-3">Médecine préventive</h3>
+        <p class="text-sm text-navy-700/60 leading-relaxed font-light">Bilans biologiques approfondis, suivi médical strict et protocoles encadrés par nos médecins, pour agir sur les causes avant qu'elles ne deviennent des symptômes.</p>
+      </div>
+      <div class="fade-in-up card-hover bg-white border border-navy-900/5 p-8 lg:p-10">
+        <div class="w-14 h-14 rounded-full bg-sage-100 flex items-center justify-center mb-6">
+          <i data-lucide="waves" class="w-6 h-6 text-sage-600"></i>
+        </div>
+        <h3 class="font-serif text-2xl text-navy-900 mb-3">Récupération haute technologie</h3>
+        <p class="text-sm text-navy-700/60 leading-relaxed font-light">Un plateau technique inspiré des meilleures cliniques internationales pour accélérer votre récupération et soutenir votre longévité au quotidien.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= PROGRAMME ========================= -->
+<section id="programme" class="py-28 lg:py-36 bg-navy-950 text-cream relative overflow-hidden">
+  <div class="absolute left-0 top-0 w-full h-full noise-overlay opacity-60"></div>
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-10">
+
+    <div class="max-w-2xl mx-auto text-center fade-in-up">
+      <span class="gold-divider center mx-auto block mb-6"></span>
+      <span class="text-gold-400 text-xs tracking-widest-xl uppercase">Le Programme</span>
+      <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl mt-4 font-medium">
+        Executive <span class="italic text-gold-300">Longevity Program</span>
+      </h2>
+      <p class="mt-6 text-cream/60 leading-relaxed font-light">
+        Quatre modules complémentaires, orchestrés par notre équipe médicale, pour couvrir l'ensemble des dimensions de votre santé et de votre performance.
+      </p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="mt-16 grid lg:grid-cols-4 gap-3 fade-in-up" id="program-tabs">
+      <button data-tab="0" class="tab-btn active flex lg:flex-col items-center gap-4 lg:gap-3 text-left lg:text-center p-5 border border-cream/10 transition-colors duration-300">
+        <span class="tab-icon-wrap w-11 h-11 rounded-full bg-cream/5 flex items-center justify-center shrink-0 transition-colors duration-300">
+          <i data-lucide="clipboard-list" class="w-5 h-5"></i>
+        </span>
+        <span class="text-sm tracking-wide">Évaluation initiale &amp; Biométrie</span>
+      </button>
+      <button data-tab="1" class="tab-btn flex lg:flex-col items-center gap-4 lg:gap-3 text-left lg:text-center p-5 border border-cream/10 transition-colors duration-300">
+        <span class="tab-icon-wrap w-11 h-11 rounded-full bg-cream/5 flex items-center justify-center shrink-0 transition-colors duration-300">
+          <i data-lucide="flask-conical" class="w-5 h-5"></i>
+        </span>
+        <span class="text-sm tracking-wide">Médecine Préventive &amp; Peptides</span>
+      </button>
+      <button data-tab="2" class="tab-btn flex lg:flex-col items-center gap-4 lg:gap-3 text-left lg:text-center p-5 border border-cream/10 transition-colors duration-300">
+        <span class="tab-icon-wrap w-11 h-11 rounded-full bg-cream/5 flex items-center justify-center shrink-0 transition-colors duration-300">
+          <i data-lucide="brain" class="w-5 h-5"></i>
+        </span>
+        <span class="text-sm tracking-wide">Coaching &amp; Nutrition</span>
+      </button>
+      <button data-tab="3" class="tab-btn flex lg:flex-col items-center gap-4 lg:gap-3 text-left lg:text-center p-5 border border-cream/10 transition-colors duration-300">
+        <span class="tab-icon-wrap w-11 h-11 rounded-full bg-cream/5 flex items-center justify-center shrink-0 transition-colors duration-300">
+          <i data-lucide="zap" class="w-5 h-5"></i>
+        </span>
+        <span class="text-sm tracking-wide">Technologies de Récupération</span>
+      </button>
+    </div>
+
+    <!-- Panels -->
+    <div class="mt-4">
+      <div class="program-panel active grid lg:grid-cols-2 gap-10 lg:gap-16 items-center bg-cream/[0.03] border border-cream/10 p-8 lg:p-14" data-panel="0">
+        <div>
+          <span class="text-gold-400 text-xs tracking-widest-xl uppercase">Module 01</span>
+          <h3 class="font-serif text-3xl lg:text-4xl mt-3 mb-5">Évaluation initiale &amp; Biométrie</h3>
+          <p class="text-cream/60 font-light leading-relaxed">Le point de départ de votre parcours : un bilan complet et une cartographie précise de votre état de santé actuel, réalisés dans nos locaux à Toulouse.</p>
+        </div>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-4"><i data-lucide="check-circle" class="w-5 h-5 text-sage-400 mt-0.5 shrink-0"></i><span class="text-sm text-cream/80">Bilan de santé complet et anamnèse approfondie</span></li>
+          <li class="flex items-start gap-4"><i data-lucide="check-circle" class="w-5 h-5 text-sage-400 mt-0.5 shrink-0"></i><span class="text-sm text-cream/80">Analyse de la qualité et des cycles du sommeil</span></li>
+          <li class="flex items-start gap-4"><i data-lucide="check-circle" class="w-5 h-5 text-sage-400 mt-0.5 shrink-0"></i><span class="text-sm text-cream/80">Composition corporelle (masse grasse, masse musculaire)</span></li>
+          <li class="flex items-start gap-4"><i data-lucide="check-circle" class="w-5 h-5 text-sage-400 mt-0.5 shrink-0"></i><span class="text-sm text-cream/80">Tension artérielle et variabilité cardiaque (HRV)</span></li>
+        </ul>
+      </div>
+
+      <div class="program-panel grid lg:grid-cols-2 gap-10 lg:gap-16 items-center bg-cream/[0.03] border border-cream/10 p-8 lg:p-14" data-panel="1">
+        <div>
+          <span class="text-gold-400 text-xs tracking-widest-xl uppercase">Module 02</span>
+          <h3 class="font-serif text-3xl lg:text-4xl mt-3 mb-5">Médecine Préventive &amp; Peptides</h3>
+          <p class="text-cream/60 font-light leading-relaxed">Un accompagnement médical strict, encadré et personnalisé, uniquement sur prescription et sous supervision de nos médecins référents.</p>
+        </div>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-4"><i data-lucide="check-circle" class="w-5 h-5 text-sage-400 mt-0.5 shrink-0"></i><span class="text-sm text-cream/80">Bilans biologiques approfondis (marqueurs de longévité)</span></li>
+          <li class="flex items-start gap-4"><i data-lucide="check-circle" class="w-5 h-5 text-sage-400 mt-0.5 shrink-0"></i><span class="text-sm text-cream/80">Optimisation hormonale sous suivi médical strict</span></li>
+          <li class="flex items-start gap-4"><i data-lucide="check-circle" class="w-5 h-5 text-sage-400 mt-0.5 shrink-0"></i><span class="text-sm text-cream/80">Protocoles sur prescription exclusivement</span></li>
+          <li class="flex items-start gap-4"><i data-lucide="check-circle" class="w-5 h-5 text-sage-400 mt-0.5 shrink-0"></i><span class="text-sm text-cream/80">Suivi biologique régulier et ajustement continu</span></li>
+        </ul>
+      </div>
+
+      <div class="program-panel grid lg:grid-cols-2 gap-10 lg:gap-16 items-center bg-cream/[0.03] border border-cream/10 p-8 lg:p-14" data-panel="2">
+        <div>
+          <span class="text-gold-400 text-xs tracking-widest-xl uppercase">Module 03</span>
+          <h3 class="font-serif text-3xl lg:text-4xl mt-3 mb-5">Coaching &amp; Nutrition</h3>
+          <p class="text-cream/60 font-light leading-relaxed">Des experts en nutrition et en performance vous accompagnent pour ancrer durablement des habitudes qui soutiennent votre énergie et votre clarté mentale.</p>
+        </div>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-4"><i data-lucide="check-circle" class="w-5 h-5 text-sage-400 mt-0.5 shrink-0"></i><span class="text-sm text-cream/80">Gestion du stress et cohérence cardiaque</span></li>
+          <li class="flex items-start gap-4"><i data-lucide="check-circle" class="w-5 h-5 text-sage-400 mt-0.5 shrink-0"></i><span class="text-sm text-cream/80">Optimisation du sommeil et des rythmes circadiens</span></li>
+          <li class="flex items-start gap-4"><i data-lucide="check-circle" class="w-5 h-5 text-sage-400 mt-0.5 shrink-0"></i><span class="text-sm text-cream/80">Rééquilibrage nutritionnel personnalisé</span></li>
+          <li class="flex items-start gap-4"><i data-lucide="check-circle" class="w-5 h-5 text-sage-400 mt-0.5 shrink-0"></i><span class="text-sm text-cream/80">Performance cognitive et concentration</span></li>
+        </ul>
+      </div>
+
+      <div class="program-panel grid lg:grid-cols-2 gap-10 lg:gap-16 items-center bg-cream/[0.03] border border-cream/10 p-8 lg:p-14" data-panel="3">
+        <div>
+          <span class="text-gold-400 text-xs tracking-widest-xl uppercase">Module 04</span>
+          <h3 class="font-serif text-3xl lg:text-4xl mt-3 mb-5">Technologies de Récupération</h3>
+          <p class="text-cream/60 font-light leading-relaxed">Un plateau technique haut de gamme, réservé à nos membres, pour accélérer la récupération physique et prolonger les effets de votre programme.</p>
+        </div>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-4"><i data-lucide="check-circle" class="w-5 h-5 text-sage-400 mt-0.5 shrink-0"></i><span class="text-sm text-cream/80">Red Light Therapy (photobiomodulation)</span></li>
+          <li class="flex items-start gap-4"><i data-lucide="check-circle" class="w-5 h-5 text-sage-400 mt-0.5 shrink-0"></i><span class="text-sm text-cream/80">Sauna infrarouge</span></li>
+          <li class="flex items-start gap-4"><i data-lucide="check-circle" class="w-5 h-5 text-sage-400 mt-0.5 shrink-0"></i><span class="text-sm text-cream/80">Pressothérapie</span></li>
+          <li class="flex items-start gap-4"><i data-lucide="check-circle" class="w-5 h-5 text-sage-400 mt-0.5 shrink-0"></i><span class="text-sm text-cream/80">Massage de récupération (recovery)</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= TARIFS ========================= -->
+<section id="tarifs" class="py-28 lg:py-36 bg-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+    <div class="max-w-2xl mx-auto text-center fade-in-up">
+      <span class="gold-divider center mx-auto block mb-6"></span>
+      <span class="text-sage-600 text-xs tracking-widest-xl uppercase">Membership</span>
+      <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl mt-4 text-navy-900 font-medium">
+        Un accompagnement <span class="italic text-sage-600">à la mesure de vos ambitions</span>
+      </h2>
+      <p class="mt-6 text-navy-700/70 leading-relaxed font-light">
+        Quatre formules, du suivi essentiel à l'accompagnement haute performance avec conciergerie santé dédiée.
+      </p>
+    </div>
+
+    <div class="mt-16 grid md:grid-cols-2 xl:grid-cols-4 gap-6 lg:gap-6 items-stretch">
+
+      <!-- Essential -->
+      <div class="fade-in-up card-hover flex flex-col bg-white border border-navy-900/10 p-8">
+        <h3 class="font-serif text-2xl text-navy-900">Essential</h3>
+        <p class="text-xs text-navy-700/50 mt-1 mb-6">Pour démarrer une démarche de prévention</p>
+        <div class="flex items-baseline gap-1 mb-8">
+          <span class="font-serif text-4xl text-navy-900">149€</span>
+          <span class="text-sm text-navy-700/50">/ mois</span>
+        </div>
+        <ul class="space-y-3 text-sm text-navy-700/70 font-light flex-1">
+          <li class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 mt-1 text-sage-500 shrink-0"></i>Suivi biométrique</li>
+          <li class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 mt-1 text-sage-500 shrink-0"></i>Coaching mensuel</li>
+          <li class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 mt-1 text-sage-500 shrink-0"></i>Accès aux espaces bien-être</li>
+        </ul>
+        <a href="#contact" class="mt-8 inline-flex items-center justify-center border border-navy-900/20 text-navy-900 hover:border-navy-900 px-6 py-3.5 text-xs tracking-widest-xl uppercase transition-all duration-300">
+          Candidater
+        </a>
+      </div>
+
+      <!-- Performance -->
+      <div class="fade-in-up card-hover flex flex-col bg-white border border-navy-900/10 p-8">
+        <h3 class="font-serif text-2xl text-navy-900">Performance</h3>
+        <p class="text-xs text-navy-700/50 mt-1 mb-6">Pour optimiser durablement votre énergie</p>
+        <div class="flex items-baseline gap-1 mb-8">
+          <span class="font-serif text-4xl text-navy-900">299€</span>
+          <span class="text-sm text-navy-700/50">/ mois</span>
+        </div>
+        <ul class="space-y-3 text-sm text-navy-700/70 font-light flex-1">
+          <li class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 mt-1 text-sage-500 shrink-0"></i>Coaching bihebdomadaire</li>
+          <li class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 mt-1 text-sage-500 shrink-0"></i>Nutrition personnalisée</li>
+          <li class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 mt-1 text-sage-500 shrink-0"></i>Récupération illimitée</li>
+        </ul>
+        <a href="#contact" class="mt-8 inline-flex items-center justify-center border border-navy-900/20 text-navy-900 hover:border-navy-900 px-6 py-3.5 text-xs tracking-widest-xl uppercase transition-all duration-300">
+          Candidater
+        </a>
+      </div>
+
+      <!-- Executive Longevity — POPULAIRE -->
+      <div class="fade-in-up flex flex-col bg-navy-950 text-cream border border-gold-400 p-8 relative xl:-translate-y-4 shadow-2xl shadow-navy-900/20">
+        <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gold-500 text-navy-950 text-[10px] tracking-widest-xl uppercase px-4 py-1.5 font-medium pill-badge whitespace-nowrap">
+          Populaire
+        </span>
+        <h3 class="font-serif text-2xl text-gold-300 mt-2">Executive Longevity</h3>
+        <p class="text-xs text-cream/50 mt-1 mb-6">Notre programme phare</p>
+        <div class="flex items-baseline gap-1 mb-8">
+          <span class="font-serif text-4xl text-cream">599€</span>
+          <span class="text-sm text-cream/50">/ mois</span>
+        </div>
+        <ul class="space-y-3 text-sm text-cream/80 font-light flex-1">
+          <li class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 mt-1 text-gold-400 shrink-0"></i>Suivi premium hebdomadaire</li>
+          <li class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 mt-1 text-gold-400 shrink-0"></i>Bilans biologiques réguliers</li>
+          <li class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 mt-1 text-gold-400 shrink-0"></i>Médecine préventive incluse</li>
+          <li class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 mt-1 text-gold-400 shrink-0"></i>Programme entièrement personnalisé</li>
+        </ul>
+        <a href="#contact" class="mt-8 inline-flex items-center justify-center bg-gold-500 text-navy-950 hover:bg-gold-400 px-6 py-3.5 text-xs tracking-widest-xl uppercase font-medium transition-all duration-300">
+          Candidater
+        </a>
+      </div>
+
+      <!-- Elite -->
+      <div class="fade-in-up card-hover flex flex-col bg-white border border-navy-900/10 p-8">
+        <h3 class="font-serif text-2xl text-navy-900">Executive Longevity Elite</h3>
+        <p class="text-xs text-navy-700/50 mt-1 mb-6">Accompagnement haute performance</p>
+        <div class="flex items-baseline gap-1 mb-8">
+          <span class="font-serif text-4xl text-navy-900">1 200€</span>
+          <span class="text-sm text-navy-700/50">/ mois et +</span>
+        </div>
+        <ul class="space-y-3 text-sm text-navy-700/70 font-light flex-1">
+          <li class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 mt-1 text-sage-500 shrink-0"></i>Médecin référent dédié</li>
+          <li class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 mt-1 text-sage-500 shrink-0"></i>Analyses biologiques avancées</li>
+          <li class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 mt-1 text-sage-500 shrink-0"></i>Conciergerie santé</li>
+        </ul>
+        <a href="#contact" class="mt-8 inline-flex items-center justify-center border border-navy-900/20 text-navy-900 hover:border-navy-900 px-6 py-3.5 text-xs tracking-widest-xl uppercase transition-all duration-300">
+          Candidater
+        </a>
+      </div>
+
+    </div>
+
+    <p class="text-center text-xs text-navy-700/40 mt-10 font-light">Tarifs indicatifs. Un entretien préalable permet de déterminer la formule la plus adaptée à votre profil et à vos objectifs.</p>
+  </div>
+</section>
+
+<!-- ========================= CLIENTÈLE CIBLE ========================= -->
+<section id="equipe" class="py-28 lg:py-36 bg-sage-100/50">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <div class="fade-in-up">
+        <span class="gold-divider block mb-6"></span>
+        <span class="text-sage-600 text-xs tracking-widest-xl uppercase">Pour qui ?</span>
+        <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl mt-4 text-navy-900 font-medium leading-tight">
+          Un club conçu pour ceux qui n'ont pas le droit de <span class="italic text-sage-600">ralentir</span>
+        </h2>
+        <p class="mt-6 text-navy-700/70 leading-relaxed font-light">
+          Executive Wellness Club accompagne des profils exigeants dont la santé conditionne directement la performance et la longévité de carrière. Notre équipe médicale et nos coachs conçoivent chaque programme en tenant compte des contraintes réelles d'un agenda de dirigeant.
+        </p>
+        <div class="mt-10 flex items-center gap-4">
+          <div class="w-12 h-12 rounded-full bg-navy-950 flex items-center justify-center shrink-0">
+            <i data-lucide="calendar-heart" class="w-5 h-5 text-gold-400"></i>
+          </div>
+          <p class="text-sm text-navy-800/80 font-light">Profil type : <span class="font-medium text-navy-900">35 à 70 ans</span>, en position de responsabilité, avec une exigence forte de résultats mesurables.</p>
+        </div>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-5 fade-in-up">
+        <div class="bg-white p-7 border border-navy-900/5 card-hover">
+          <i data-lucide="briefcase" class="w-6 h-6 text-sage-600 mb-4"></i>
+          <h3 class="font-serif text-xl text-navy-900 mb-2">Dirigeants</h3>
+          <p class="text-xs text-navy-700/60 font-light leading-relaxed">CEO, DG, membres de comité de direction</p>
+        </div>
+        <div class="bg-white p-7 border border-navy-900/5 card-hover">
+          <i data-lucide="rocket" class="w-6 h-6 text-sage-600 mb-4"></i>
+          <h3 class="font-serif text-xl text-navy-900 mb-2">Entrepreneurs</h3>
+          <p class="text-xs text-navy-700/60 font-light leading-relaxed">Fondateurs et créateurs d'entreprise</p>
+        </div>
+        <div class="bg-white p-7 border border-navy-900/5 card-hover">
+          <i data-lucide="badge-check" class="w-6 h-6 text-sage-600 mb-4"></i>
+          <h3 class="font-serif text-xl text-navy-900 mb-2">Cadres Supérieurs</h3>
+          <p class="text-xs text-navy-700/60 font-light leading-relaxed">Direction et management stratégique</p>
+        </div>
+        <div class="bg-white p-7 border border-navy-900/5 card-hover">
+          <i data-lucide="scale" class="w-6 h-6 text-sage-600 mb-4"></i>
+          <h3 class="font-serif text-xl text-navy-900 mb-2">Professions Libérales</h3>
+          <p class="text-xs text-navy-700/60 font-light leading-relaxed">Médecins, avocats, experts indépendants</p>
+        </div>
+        <div class="bg-white p-7 border border-navy-900/5 card-hover sm:col-span-2">
+          <i data-lucide="trophy" class="w-6 h-6 text-sage-600 mb-4"></i>
+          <h3 class="font-serif text-xl text-navy-900 mb-2">Sportifs exigeants</h3>
+          <p class="text-xs text-navy-700/60 font-light leading-relaxed">Performance physique et récupération de haut niveau</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========================= CONTACT ========================= -->
+<section id="contact" class="py-28 lg:py-36 bg-navy-950 text-cream relative overflow-hidden">
+  <div class="absolute inset-0 noise-overlay opacity-50"></div>
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid lg:grid-cols-2 gap-16">
+
+      <!-- Info column -->
+      <div class="fade-in-up">
+        <span class="gold-divider block mb-6"></span>
+        <span class="text-gold-400 text-xs tracking-widest-xl uppercase">Candidature privée</span>
+        <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl mt-4 font-medium leading-tight">
+          Demandez votre <span class="italic text-gold-300">bilan confidentiel</span>
+        </h2>
+        <p class="mt-6 text-cream/60 leading-relaxed font-light max-w-md">
+          L'accès au club se fait sur candidature. Renseignez ce formulaire pour obtenir un entretien privé avec notre équipe médicale et découvrir le programme adapté à votre profil.
+        </p>
+
+        <div class="mt-12 space-y-6">
+          <div class="flex items-start gap-4">
+            <i data-lucide="map-pin" class="w-5 h-5 text-gold-400 mt-1 shrink-0"></i>
+            <div>
+              <p class="text-sm font-medium text-cream">Toulouse, France</p>
+              <p class="text-xs text-cream/50 mt-1">Centre-ville — accès et parking privés sur rendez-vous</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <i data-lucide="phone" class="w-5 h-5 text-gold-400 mt-1 shrink-0"></i>
+            <div>
+              <p class="text-sm font-medium text-cream">+33 5 XX XX XX XX</p>
+              <p class="text-xs text-cream/50 mt-1">Du lundi au vendredi, 8h – 19h</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <i data-lucide="mail" class="w-5 h-5 text-gold-400 mt-1 shrink-0"></i>
+            <div>
+              <p class="text-sm font-medium text-cream">contact@executivewellnessclub.fr</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-10 flex items-start gap-3 border border-cream/10 p-5 bg-cream/[0.03]">
+          <i data-lucide="shield-check" class="w-5 h-5 text-sage-400 mt-0.5 shrink-0"></i>
+          <p class="text-xs text-cream/50 leading-relaxed font-light">
+            Vos données de santé sont traitées avec le plus haut niveau de confidentialité, conformément au secret médical et au RGPD. Aucune information n'est partagée sans votre consentement explicite.
+          </p>
+        </div>
+      </div>
+
+      <!-- Form column -->
+      <div class="fade-in-up bg-cream text-navy-900 p-8 lg:p-10">
+        <form id="contact-form" class="space-y-6">
+          <div>
+            <label for="nom" class="block text-xs tracking-widest-xl uppercase text-navy-700/60 mb-2">Nom complet</label>
+            <input type="text" id="nom" name="nom" required class="w-full bg-transparent border-b border-navy-900/20 py-2.5 text-sm focus:border-gold-500 transition-colors" placeholder="Jean Dupont">
+          </div>
+          <div>
+            <label for="fonction" class="block text-xs tracking-widest-xl uppercase text-navy-700/60 mb-2">Fonction / Entreprise</label>
+            <input type="text" id="fonction" name="fonction" required class="w-full bg-transparent border-b border-navy-900/20 py-2.5 text-sm focus:border-gold-500 transition-colors" placeholder="Directeur Général, Société XYZ">
+          </div>
+          <div>
+            <label for="telephone" class="block text-xs tracking-widest-xl uppercase text-navy-700/60 mb-2">Téléphone</label>
+            <input type="tel" id="telephone" name="telephone" required class="w-full bg-transparent border-b border-navy-900/20 py-2.5 text-sm focus:border-gold-500 transition-colors" placeholder="+33 6 XX XX XX XX">
+          </div>
+          <div>
+            <label for="objectif" class="block text-xs tracking-widest-xl uppercase text-navy-700/60 mb-2">Objectif principal</label>
+            <select id="objectif" name="objectif" required class="w-full bg-transparent border-b border-navy-900/20 py-2.5 text-sm focus:border-gold-500 transition-colors">
+              <option value="">Sélectionnez une option</option>
+              <option>Prévention &amp; longévité générale</option>
+              <option>Optimisation de l'énergie et de la performance</option>
+              <option>Gestion du stress et récupération</option>
+              <option>Bilan de santé complet</option>
+              <option>Autre</option>
+            </select>
+          </div>
+
+          <button type="submit" class="w-full inline-flex items-center justify-center gap-2 bg-navy-950 text-cream hover:bg-navy-900 px-6 py-4 text-xs tracking-widest-xl uppercase font-medium transition-all duration-300">
+            Demander mon entretien privé
+          </button>
+
+          <p id="form-success" class="hidden text-sm text-sage-600 text-center pt-2">Merci. Votre demande a bien été transmise — notre équipe vous recontactera sous 48h.</p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========================= FOOTER ========================= -->
+<footer class="bg-navy-950 border-t border-cream/10 pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid md:grid-cols-4 gap-10 pb-12 border-b border-cream/10">
+
+      <div class="md:col-span-2">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="flex items-center justify-center w-9 h-9 rounded-full border border-gold-400/60 text-gold-400">
+            <i data-lucide="leaf" class="w-4 h-4"></i>
+          </span>
+          <span class="font-serif text-lg text-cream">Executive Wellness Club</span>
+        </div>
+        <p class="text-sm text-cream/50 font-light leading-relaxed max-w-sm">
+          Premier centre de prévention santé, performance et longévité de Toulouse. L'expertise suisse de la longévité au service des dirigeants et des professionnels exigeants.
+        </p>
+        <div class="flex items-center gap-4 mt-6">
+          <a href="#" aria-label="LinkedIn" class="w-9 h-9 rounded-full border border-cream/15 flex items-center justify-center hover:border-gold-400 hover:text-gold-400 text-cream/60 transition-colors">
+            <i data-lucide="linkedin" class="w-4 h-4"></i>
+          </a>
+          <a href="#" aria-label="Instagram" class="w-9 h-9 rounded-full border border-cream/15 flex items-center justify-center hover:border-gold-400 hover:text-gold-400 text-cream/60 transition-colors">
+            <i data-lucide="instagram" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="text-xs tracking-widest-xl uppercase text-gold-400 mb-5">Navigation</h4>
+        <ul class="space-y-3 text-sm text-cream/50 font-light">
+          <li><a href="#concept" class="hover:text-cream transition-colors">Concept</a></li>
+          <li><a href="#programme" class="hover:text-cream transition-colors">Programme</a></li>
+          <li><a href="#tarifs" class="hover:text-cream transition-colors">Tarifs</a></li>
+          <li><a href="#contact" class="hover:text-cream transition-colors">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-xs tracking-widest-xl uppercase text-gold-400 mb-5">Légal</h4>
+        <ul class="space-y-3 text-sm text-cream/50 font-light">
+          <li><a href="#" class="hover:text-cream transition-colors">Mentions légales</a></li>
+          <li><a href="#" class="hover:text-cream transition-colors">Conditions générales</a></li>
+          <li><a href="#" class="hover:text-cream transition-colors">Politique de confidentialité</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pt-8 flex flex-col md:flex-row gap-4 justify-between items-center">
+      <p class="text-xs text-cream/30 font-light">© 2026 Executive Wellness Club Toulouse. Tous droits réservés.</p>
+      <p class="text-xs text-cream/30 font-light max-w-xl md:text-right">
+        Les prestations proposées relèvent d'un cadre médical réglementé. Toute prescription est réalisée exclusivement par des médecins habilités, dans le respect du code de déontologie médicale.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- ========================= SCRIPTS ========================= -->
+<script>
+  // Init Lucide icons
+  lucide.createIcons();
+
+  // Mobile menu toggle
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const iconMenu = document.getElementById('icon-menu');
+  const iconClose = document.getElementById('icon-close');
+
+  menuToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+    iconMenu.classList.toggle('hidden');
+    iconClose.classList.toggle('hidden');
+  });
+
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      iconMenu.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+    });
+  });
+
+  // Header background on scroll
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) {
+      header.classList.add('shadow-lg', 'shadow-navy-950/30');
+    } else {
+      header.classList.remove('shadow-lg', 'shadow-navy-950/30');
+    }
+  });
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const targetId = this.getAttribute('href');
+      if (targetId.length > 1) {
+        const target = document.querySelector(targetId);
+        if (target) {
+          e.preventDefault();
+          const offset = 90;
+          const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      }
+    });
+  });
+
+  // Program tabs interactivity
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const panels = document.querySelectorAll('.program-panel');
+
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const index = btn.getAttribute('data-tab');
+
+      tabButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      panels.forEach(p => {
+        p.classList.toggle('active', p.getAttribute('data-panel') === index);
+      });
+    });
+  });
+
+  // Fade-in-up on scroll (IntersectionObserver)
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+
+  // Contact form handling
+  const contactForm = document.getElementById('contact-form');
+  const formSuccess = document.getElementById('form-success');
+
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    // Ici : intégrer l'envoi vers un backend / CRM (ex: HubSpot, Mailchimp, API interne)
+    formSuccess.classList.remove('hidden');
+    contactForm.querySelector('button[type="submit"]').setAttribute('disabled', 'true');
+    contactForm.reset();
+  });
+</script>
+
+</body>
+</html>
