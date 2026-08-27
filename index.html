@@ -275,7 +275,73 @@
     </div>
   </div>
 </section>
-
+<!-- ========================= QUIZ OBJECTIF ========================= -->
+<section id="objectif-quiz" class="py-24 bg-navy-950 text-cream relative border-t border-gold-500/10">
+  <div class="max-w-6xl mx-auto px-6 lg:px-10">
+    
+    <div class="text-center max-w-3xl mx-auto mb-16 fade-in-up">
+      <span class="text-gold-400 text-xs tracking-widest-xl uppercase block mb-3">Trouvez Votre Chemin</span>
+      <h2 class="font-serif text-3xl sm:text-5xl text-cream">Quel est ton objectif ?</h2>
+      <div class="gold-divider center mx-auto mt-4"></div>
+      <p class="mt-4 text-sm text-cream/70">Sélectionne le profil qui te ressemble pour découvrir le programme idéal.</p>
+    </div>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+      
+      <!-- Persona 1 -->
+      <button onclick="selectPersona('guide', 'Perte de poids')" class="persona-card group p-6 bg-navy-900 border border-gold-500/20 hover:border-gold-400 rounded-sm cursor-pointer transition-all duration-300 hover:shadow-lg hover:scale-105 text-left" data-persona="perte-poids" data-offer="guide">
+        <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-300 mb-4 group-hover:bg-gold-500/20 transition-colors">
+          <i data-lucide="target" class="w-5 h-5"></i>
+        </div>
+        <h4 class="font-serif text-lg text-gold-300 mb-2">Perdre du poids</h4>
+        <p class="text-xs text-cream/70">sainement et durablement</p>
+      </button>
+      
+      <!-- Persona 2 -->
+      <button onclick="selectPersona('individuel', 'Prise de masse')" class="persona-card group p-6 bg-navy-900 border border-gold-500/20 hover:border-gold-400 rounded-sm cursor-pointer transition-all duration-300 hover:shadow-lg hover:scale-105 text-left" data-persona="prise-masse" data-offer="individuel">
+        <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-300 mb-4 group-hover:bg-gold-500/20 transition-colors">
+          <i data-lucide="zap" class="w-5 h-5"></i>
+        </div>
+        <h4 class="font-serif text-lg text-gold-300 mb-2">Prise de masse</h4>
+        <p class="text-xs text-cream/70">musculaire & force</p>
+      </button>
+      
+      <!-- Persona 3 -->
+      <button onclick="selectPersona('individuel', 'Tonicité')" class="persona-card group p-6 bg-navy-900 border border-gold-500/20 hover:border-gold-400 rounded-sm cursor-pointer transition-all duration-300 hover:shadow-lg hover:scale-105 text-left" data-persona="tonicite" data-offer="individuel">
+        <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-300 mb-4 group-hover:bg-gold-500/20 transition-colors">
+          <i data-lucide="heart-pulse" class="w-5 h-5"></i>
+        </div>
+        <h4 class="font-serif text-lg text-gold-300 mb-2">Tonique & Musclé</h4>
+        <p class="text-xs text-cream/70">révéler sa forme</p>
+      </button>
+      
+      <!-- Persona 4 -->
+      <button onclick="selectPersona('individuel', 'Bien-être global')" class="persona-card group p-6 bg-navy-900 border border-gold-500/20 hover:border-gold-400 rounded-sm cursor-pointer transition-all duration-300 hover:shadow-lg hover:scale-105 text-left" data-persona="bien-etre" data-offer="individuel">
+        <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-300 mb-4 group-hover:bg-gold-500/20 transition-colors">
+          <i data-lucide="leaf" class="w-5 h-5"></i>
+        </div>
+        <h4 class="font-serif text-lg text-gold-300 mb-2">Bien-être Global</h4>
+        <p class="text-xs text-cream/70">santé & vitalité</p>
+      </button>
+      
+      <!-- Persona 5 -->
+      <button onclick="selectPersona('global', 'Beauté & Esthétique')" class="persona-card group p-6 bg-navy-900 border border-gold-500/20 hover:border-gold-400 rounded-sm cursor-pointer transition-all duration-300 hover:shadow-lg hover:scale-105 text-left" data-persona="beaute" data-offer="global">
+        <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-300 mb-4 group-hover:bg-gold-500/20 transition-colors">
+          <i data-lucide="sparkles" class="w-5 h-5"></i>
+        </div>
+        <h4 class="font-serif text-lg text-gold-300 mb-2">Beauté</h4>
+        <p class="text-xs text-cream/70">soins & esthétique</p>
+      </button>
+      
+    </div>
+    
+    <!-- Callout après sélection (caché par défaut) -->
+    <div id="persona-callout" class="hidden mt-10 bg-gold-500/10 border border-gold-400/30 p-6 rounded-sm">
+      <p class="text-sm text-cream text-center"><strong id="callout-text"></strong></p>
+    </div>
+    
+  </div>
+</section>
 <!-- ========================= PROGRAMMES / TARIFS ========================= -->
 <section id="programmes" class="py-24 bg-cream relative">
   <div class="max-w-7xl mx-auto px-6 lg:px-10">
@@ -497,6 +563,43 @@
   }, observerOptions);
 
   document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+  
+  // ===== PERSONAS QUIZ =====
+  function selectPersona(offerType, personaName) {
+    const callout = document.getElementById('persona-callout');
+    const calloutText = document.getElementById('callout-text');
+    
+    // Mapping des messages
+    const messages = {
+      'guide': `Commence avec notre Guide Stratégique (30€) pour les fondations. Tu pourras upgrader ensuite selon tes progrès.`,
+      'individuel': `Le Programme Individuel est parfait pour ${personaName.toLowerCase()}. Bilan sanguin + suivi sport/nutrition adapté chaque mois.`,
+      'global': `Le Programme Global est ta solution complète : tout l'Individuel + peptides cosméceutiques + protocoles esthétiques prioritaires.`
+    };
+    
+    // Affiche le callout
+    calloutText.innerText = messages[offerType];
+    callout.classList.remove('hidden');
+    
+    // Update du select du formulaire
+    const selectForm = document.querySelector('select');
+    if (selectForm) {
+      if (offerType === 'guide') {
+        selectForm.value = 'Le Guide Stratégique (30 €)';
+      } else if (offerType === 'individuel') {
+        selectForm.value = 'Le Programme Individuel (Abonnement Mensuel)';
+      } else if (offerType === 'global') {
+        selectForm.value = 'Le Programme Global – Santé & Esthétique (Abonnement Mensuel)';
+      }
+    }
+    
+    // Scroll vers la section programmes avec offset du header
+    setTimeout(() => {
+      const programmesSection = document.getElementById('programmes');
+      const headerHeight = 100;
+      const offsetTop = programmesSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+      window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+    }, 300);
+  }
 </script>
 
 </body>
