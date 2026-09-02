@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Executive Wellness Club | Temps, Santé &amp; Beauté</title>
+<meta name="description" content="Un accompagnement individuel et moderne pour optimiser votre temps, maximiser votre santé et révéler votre beauté au quotidien.">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          navy: {
+            950: '#050b14',
+            900: '#0a1628',
+            800: '#0e2038',
+            700: '#14294a',
+            600: '#1c3357',
+            500: '#2a4770',
+          },
+          sage: {
+            700: '#354d40',
+            600: '#43604f',
+            500: '#59795f',
+            400: '#7c9885',
+            300: '#a3bcab',
+            100: '#e6ede8',
+          },
+          gold: {
+            600: '#a9873f',
+            500: '#c9a86a',
+            400: '#d9c08f',
+            300: '#e8d7ae',
+            100: '#f6efdd',
+          },
+          cream: '#faf8f2',
+        },
+        fontFamily: {
+          serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+          sans: ['"Jost"', 'system-ui', 'sans-serif'],
+        },
+      }
+    }
+  }
+</script>
+
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Jost', system-ui, sans-serif; background-color: #faf8f2; color: #0a1628; }
+  h1, h2, h3, h4, .font-serif-display { font-family: 'Cormorant Garamond', Georgia, serif; }
+
+  .tracking-widest-xl { letter-spacing: 0.25em; }
+
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .fade-in-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .gold-divider {
+    width: 64px;
+    height: 1px;
+    background: linear-gradient(90deg, #c9a86a, transparent);
+  }
+  .gold-divider.center {
+    background: #c9a86a;
+    width: 56px;
+    height: 2px;
+  }
+
+  ::selection { background: #c9a86a; color: #0a1628; }
+
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: #faf8f2; }
+  ::-webkit-scrollbar-thumb { background: #0a1628; border-radius: 6px; }
+
+  .noise-overlay {
+    background-image: radial-gradient(circle at 20% 20%, rgba(201,168,106,0.08), transparent 40%),
+                       radial-gradient(circle at 80% 60%, rgba(124,152,133,0.10), transparent 45%);
+  }
+
+  .card-hover {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+  }
+  .card-hover:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 48px -12px rgba(10, 22, 40, 0.18);
+  }
+
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #c9a86a;
+  }
+
+  #mobile-menu {
+    transition: max-height 0.4s ease, opacity 0.3s ease;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+  }
+  #mobile-menu.open {
+    max-height: 480px;
+    opacity: 1;
+  }
+
+  .bg-hero-gradient {
+    background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(89,121,95,0.35), transparent 60%), linear-gradient(180deg, #050b14 0%, #0a1628 55%, #0e2038 100%);
+  }
+</style>
+</head>
+
+<body class="bg-cream text-navy-900 antialiased">
+
+<!-- ========================= HEADER / NAV ========================= -->
+<header id="site-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-500 bg-navy-950/95 backdrop-blur-sm border-b border-gold-500/10">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="flex items-center justify-between h-20 lg:h-24">
+
+      <!-- Logo -->
+      <a href="#accueil" class="flex items-center gap-3 group">
+        <span class="flex items-center justify-center w-9 h-9 rounded-full border border-gold-400/60 text-gold-400">
+          <i data-lucide="sparkles" class="w-4 h-4"></i>
+        </span>
+        <span class="flex flex-col leading-none">
+          <span class="font-serif text-lg lg:text-xl tracking-wide text-cream">Executive Wellness</span>
+          <span class="text-[10px] tracking-widest-xl text-gold-400/80 uppercase mt-1">Longevity &amp; Performance</span>
+        </span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center gap-10 text-sm tracking-wide text-cream/80">
+        <a href="#manifeste" class="hover:text-gold-400 transition-colors duration-300">Philosophie</a>
+        <a href="#piliers" class="hover:text-gold-400 transition-colors duration-300">Les 3 Piliers</a>
+
+        <div class="relative group">
+          <button id="tools-menu-btn" onclick="toggleToolsMenu(event)" aria-expanded="false" aria-haspopup="true" class="flex items-center gap-1.5 hover:text-gold-400 transition-colors duration-300">
+            Outils <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
+          </button>
+          <div id="tools-menu-panel" class="absolute left-1/2 -translate-x-1/2 top-full pt-3 hidden group-hover:block">
+            <div class="w-64 bg-navy-950 border border-gold-500/20 rounded-sm shadow-2xl py-2">
+              <a href="#calculateur-calories" class="block px-5 py-3 text-sm hover:bg-navy-900 hover:text-gold-400 transition-colors">Calculateur Calories</a>
+              <a href="programmesportif.html" class="block px-5 py-3 text-sm hover:bg-navy-900 hover:text-gold-400 transition-colors">Programme Sportif</a>
+              <a href="recettes.html" class="block px-5 py-3 text-sm hover:bg-navy-900 hover:text-gold-400 transition-colors">Recettes &amp; Courses</a>
+              <a href="routine-beaute.html" class="block px-5 py-3 text-sm hover:bg-navy-900 hover:text-gold-400 transition-colors">Ma Routine Beauté</a>
+              <a href="soinsesthetiques.html" class="block px-5 py-3 text-sm hover:bg-navy-900 hover:text-gold-400 transition-colors">Guide des Soins</a>
+            </div>
+          </div>
+        </div>
+
+        <a href="programmes.html" class="hover:text-gold-400 transition-colors duration-300 font-medium text-gold-300">Programmes</a>
+      </nav>
+
+      <!-- CTA Desktop -->
+      <a href="#objectif-quiz" class="hidden lg:inline-flex items-center gap-2 border border-gold-400/50 text-gold-300 hover:bg-gold-500/10 hover:border-gold-400 font-semibold px-6 py-3 text-xs tracking-widest-xl uppercase transition-all duration-300">
+        Commencer mon diagnostic
+      </a>
+
+      <!-- Mobile Toggle -->
+      <button id="menu-toggle" aria-label="Ouvrir le menu" class="lg:hidden text-cream">
+        <i data-lucide="menu" id="icon-menu" class="w-7 h-7"></i>
+        <i data-lucide="x" id="icon-close" class="w-7 h-7 hidden"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="lg:hidden bg-navy-950 border-t border-gold-500/10">
+    <nav class="flex flex-col px-6 py-6 gap-5 text-cream/85 text-sm tracking-wide">
+      <a href="#manifeste" class="mobile-link py-1">Philosophie</a>
+      <a href="#piliers" class="mobile-link py-1">Les 3 Piliers</a>
+      <a href="#calculateur-calories" class="mobile-link py-1">Calculateur Calories</a>
+      <a href="programmesportif.html" class="mobile-link py-1">Programme Sportif</a>
+      <a href="recettes.html" class="mobile-link py-1">Recettes &amp; Courses</a>
+      <a href="routine-beaute.html" class="mobile-link py-1">Ma Routine Beauté</a>
+      <a href="soinsesthetiques.html" class="mobile-link py-1">Guide des Soins</a>
+      <a href="programmes.html" class="mobile-link py-1 text-gold-300">Programmes</a>
+      <a href="#objectif-quiz" class="mobile-link mt-2 inline-flex justify-center items-center border border-gold-400/50 text-gold-300 font-semibold px-6 py-3 text-xs tracking-widest-xl uppercase">
+        Commencer mon diagnostic
+      </a>
+    </nav>
+  </div>
+</header>
+
+<!-- ========================= HERO ========================= -->
+<section id="accueil" class="relative min-h-screen flex items-center bg-hero-gradient noise-overlay overflow-hidden pt-32 pb-24">
+  <div class="relative max-w-5xl mx-auto px-6 lg:px-10 text-center w-full">
+    
+    <div class="fade-in-up">
+      <div class="inline-flex items-center gap-3 mb-6 bg-navy-900/80 border border-gold-500/20 px-4 py-2 rounded-full">
+        <span class="w-2 h-2 rounded-full bg-gold-400 animate-pulse"></span>
+        <span class="text-gold-300 text-xs tracking-widest-xl uppercase">Accompagnement Individuel &amp; Longévité</span>
+      </div>
+
+      <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl leading-[1.1] text-cream font-medium max-w-4xl mx-auto">
+        Vivre mieux, plus fort,<br>
+        <span class="italic text-gold-300">et plus longtemps.</span>
+      </h1>
+
+      <p class="mt-8 text-base sm:text-xl text-cream/80 max-w-2xl mx-auto leading-relaxed font-light">
+        Un programme moderne conçu pour maximiser vos ressources les plus précieuses : <strong class="font-normal text-cream">votre Temps, votre Santé et votre Beauté</strong>.
+      </p>
+
+      <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+        <a href="#objectif-quiz" class="inline-flex items-center justify-center gap-2 bg-gold-500/15 border border-gold-400/60 text-gold-200 hover:bg-gold-500/25 hover:border-gold-400 px-8 py-4 text-xs tracking-widest-xl uppercase font-semibold transition-all duration-300">
+          Commencer mon diagnostic
+        </a>
+        <a href="#manifeste" class="inline-flex items-center justify-center gap-2 border border-cream/30 text-cream hover:border-gold-400 hover:text-gold-300 px-8 py-4 text-xs tracking-widest-xl uppercase transition-all duration-300">
+          En savoir plus
+        </a>
+      </div>
+      <p class="mt-4 text-xs text-cream/40">30 secondes, une seule question — pour être orienté(e) vers le bon accompagnement.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========================= MANIFESTE / PHILOSOPHIE ========================= -->
+<section id="manifeste" class="py-24 lg:py-32 bg-cream relative">
+  <div class="max-w-4xl mx-auto px-6 lg:px-10 text-center">
+    <div class="fade-in-up">
+      <span class="text-gold-600 text-xs tracking-widest-xl uppercase block mb-3">Notre Méthode</span>
+      <h2 class="font-serif text-3xl sm:text-5xl text-navy-950 leading-tight">
+        Santé <strong class="font-semibold">prise en main</strong>.<br><strong class="font-semibold">Temps récupéré</strong>.
+      </h2>
+      <div class="gold-divider center mx-auto my-8"></div>
+
+      <p class="text-navy-900/80 text-lg leading-relaxed font-light mb-6">
+        Pas de demi-mesures. Votre santé, votre forme et votre apparence traitées avec la rigueur d'un dossier prioritaire : <strong class="font-semibold text-navy-950">bilan complet</strong>, <strong class="font-semibold text-navy-950">alimentation ciblée</strong>, <strong class="font-semibold text-navy-950">programme sur-mesure</strong>.
+      </p>
+      <p class="text-navy-900/70 text-base leading-relaxed font-light">
+        On gère <strong class="font-semibold text-navy-950">toute la logistique</strong> — rendez-vous, réservations, ajustements d'agenda. Vous suivez un <strong class="font-semibold text-navy-950">plan clair</strong>, pensé pour un agenda chargé.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= LES 3 PILIERS ========================= -->
+<section id="piliers" class="py-24 bg-navy-950 text-cream relative border-t border-b border-gold-500/10">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    
+    <div class="text-center max-w-3xl mx-auto mb-16 fade-in-up">
+      <span class="text-gold-400 text-xs tracking-widest-xl uppercase block mb-3">Les Fondations</span>
+      <h2 class="font-serif text-3xl sm:text-5xl text-cream">Trois piliers pour votre transformation</h2>
+      <div class="gold-divider center mx-auto mt-4"></div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      
+      <!-- Pilier 1 -->
+      <div class="bg-navy-900 border border-gold-500/20 p-8 sm:p-10 rounded-sm fade-in-up">
+        <div class="w-12 h-12 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-300 mb-6">
+          <i data-lucide="clock" class="w-6 h-6"></i>
+        </div>
+        <h3 class="font-serif text-2xl text-gold-300 mb-4">Optimiser son Temps</h3>
+        <p class="text-sm text-cream/70 font-light leading-relaxed">
+          Un accompagnement clé en main qui s'adapte précisément à votre rythme de vie. Nous organisons votre feuille de route pour que chaque action compte, sans vous faire perdre une seule minute.
+        </p>
+      </div>
+
+      <!-- Pilier 2 -->
+      <div class="bg-navy-900 border border-gold-500/20 p-8 sm:p-10 rounded-sm fade-in-up">
+        <div class="w-12 h-12 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-300 mb-6">
+          <i data-lucide="activity" class="w-6 h-6"></i>
+        </div>
+        <h3 class="font-serif text-2xl text-gold-300 mb-4">Maximiser sa Santé</h3>
+        <p class="text-sm text-cream/70 font-light leading-relaxed mb-4">
+          Une approche scientifiquement guidée par vos données biologiques réelles (analyse sur base de bilan sanguin). Bénéficiez d'un suivi sportif et d'une nutrition optimisée, adaptés à votre profil unique.
+        </p>
+        <a href="programmesportif.html" class="inline-flex items-center gap-1.5 text-xs text-gold-400 hover:text-gold-300 underline underline-offset-2 transition-colors">
+          Générer mon programme sportif <i data-lucide="arrow-right" class="w-3 h-3"></i>
+        </a>
+      </div>
+
+      <!-- Pilier 3 -->
+      <div class="bg-navy-900 border border-gold-500/20 p-8 sm:p-10 rounded-sm fade-in-up">
+        <div class="w-12 h-12 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-300 mb-6">
+          <i data-lucide="sparkle" class="w-6 h-6"></i>
+        </div>
+        <h3 class="font-serif text-2xl text-gold-300 mb-4">Révéler sa Beauté</h3>
+        <p class="text-sm text-cream/70 font-light leading-relaxed mb-4">
+          Une prise en charge globale associant des routines cosméceutiques ciblées (formules aux peptides, soins de haut niveau) et l'accès à des protocoles de soins spécialisés pour rayonner durablement.
+        </p>
+        <a href="soinsesthetiques.html" class="inline-flex items-center gap-1.5 text-xs text-gold-400 hover:text-gold-300 underline underline-offset-2 transition-colors">
+          Voir le guide des soins esthétiques <i data-lucide="arrow-right" class="w-3 h-3"></i>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ========================= QUIZ OBJECTIF ========================= -->
+<section id="objectif-quiz" class="py-24 bg-navy-950 text-cream relative border-t border-gold-500/10">
+  <div class="max-w-6xl mx-auto px-6 lg:px-10">
+    
+    <div class="text-center max-w-3xl mx-auto mb-16 fade-in-up">
+      <span class="text-gold-400 text-xs tracking-widest-xl uppercase block mb-3">Votre Diagnostic</span>
+      <h2 class="font-serif text-3xl sm:text-5xl text-cream">Quel est ton objectif ?</h2>
+      <div class="gold-divider center mx-auto mt-4"></div>
+      <p class="mt-4 text-sm text-cream/70">Sélectionne le profil qui te ressemble pour découvrir le programme idéal. Le calculateur juste en dessous t'aidera ensuite à affiner tes besoins précis.</p>
+    </div>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+      
+      <!-- Persona 1 -->
+      <button onclick="selectPersona('guide', 'Perte de poids')" class="persona-card group p-6 bg-navy-900 border border-gold-500/20 hover:border-gold-400 rounded-sm cursor-pointer transition-all duration-300 hover:shadow-lg hover:scale-105 text-left" data-persona="perte-poids" data-offer="guide">
+        <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-300 mb-4 group-hover:bg-gold-500/20 transition-colors">
+          <i data-lucide="target" class="w-5 h-5"></i>
+        </div>
+        <h4 class="font-serif text-lg text-gold-300 mb-2">Perdre du poids</h4>
+        <p class="text-xs text-cream/70">sainement et durablement</p>
+      </button>
+      
+      <!-- Persona 2 -->
+      <button onclick="selectPersona('individuel', 'Prise de masse')" class="persona-card group p-6 bg-navy-900 border border-gold-500/20 hover:border-gold-400 rounded-sm cursor-pointer transition-all duration-300 hover:shadow-lg hover:scale-105 text-left" data-persona="prise-masse" data-offer="individuel">
+        <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-300 mb-4 group-hover:bg-gold-500/20 transition-colors">
+          <i data-lucide="zap" class="w-5 h-5"></i>
+        </div>
+        <h4 class="font-serif text-lg text-gold-300 mb-2">Prise de masse</h4>
+        <p class="text-xs text-cream/70">musculaire & force</p>
+      </button>
+      
+      <!-- Persona 3 -->
+      <button onclick="selectPersona('individuel', 'Tonicité')" class="persona-card group p-6 bg-navy-900 border border-gold-500/20 hover:border-gold-400 rounded-sm cursor-pointer transition-all duration-300 hover:shadow-lg hover:scale-105 text-left" data-persona="tonicite" data-offer="individuel">
+        <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-300 mb-4 group-hover:bg-gold-500/20 transition-colors">
+          <i data-lucide="heart-pulse" class="w-5 h-5"></i>
+        </div>
+        <h4 class="font-serif text-lg text-gold-300 mb-2">Tonique & Musclé</h4>
+        <p class="text-xs text-cream/70">révéler sa forme</p>
+      </button>
+      
+      <!-- Persona 4 -->
+      <button onclick="selectPersona('individuel', 'Bien-être global')" class="persona-card group p-6 bg-navy-900 border border-gold-500/20 hover:border-gold-400 rounded-sm cursor-pointer transition-all duration-300 hover:shadow-lg hover:scale-105 text-left" data-persona="bien-etre" data-offer="individuel">
+        <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-300 mb-4 group-hover:bg-gold-500/20 transition-colors">
+          <i data-lucide="leaf" class="w-5 h-5"></i>
+        </div>
+        <h4 class="font-serif text-lg text-gold-300 mb-2">Bien-être Global</h4>
+        <p class="text-xs text-cream/70">santé & vitalité</p>
+      </button>
+      
+      <!-- Persona 5 -->
+      <button onclick="selectPersona('global', 'Beauté & Esthétique')" class="persona-card group p-6 bg-navy-900 border border-gold-500/20 hover:border-gold-400 rounded-sm cursor-pointer transition-all duration-300 hover:shadow-lg hover:scale-105 text-left" data-persona="beaute" data-offer="global">
+        <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-300 mb-4 group-hover:bg-gold-500/20 transition-colors">
+          <i data-lucide="sparkles" class="w-5 h-5"></i>
+        </div>
+        <h4 class="font-serif text-lg text-gold-300 mb-2">Beauté</h4>
+        <p class="text-xs text-cream/70">soins & esthétique</p>
+      </button>
+      
+    </div>
+    
+    <!-- Callout après sélection (caché par défaut) -->
+    <div id="persona-callout" class="hidden mt-10 bg-gold-500/10 border border-gold-400/30 p-6 rounded-sm">
+      <p class="text-sm text-cream text-center"><strong id="callout-text"></strong></p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 mt-5">
+        <span class="text-xs text-cream/60 flex items-center gap-2">
+          <i data-lucide="arrow-down-circle" class="w-4 h-4"></i> Affinez ci-dessous avec le calculateur de calories
+        </span>
+        <a id="callout-link" href="programmes.html" class="text-xs uppercase tracking-widest text-gold-300 underline underline-offset-2 hover:text-gold-200 transition-colors">
+          Voir le détail de cette offre &amp; les tarifs →
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- ========================= CALCULATEUR MÉTABOLISME & CALORIES ========================= -->
+<section id="calculateur-calories" class="py-24 bg-navy-950 text-cream relative border-t border-b border-gold-500/10">
+  <div class="max-w-4xl mx-auto px-6 lg:px-10">
+
+    <div class="text-center max-w-3xl mx-auto mb-14 fade-in-up">
+      <span class="text-gold-400 text-xs tracking-widest-xl uppercase block mb-3">Pour Aller Plus Loin</span>
+      <h2 class="font-serif text-3xl sm:text-5xl text-cream">Affinez avec le calculateur de calories</h2>
+      <div class="gold-divider center mx-auto mt-4"></div>
+      <p class="mt-4 text-sm text-cream/70 max-w-xl mx-auto">
+        Une fois votre profil identifié ci-dessus, précisez ici votre métabolisme de base et vos besoins caloriques quotidiens (homme ou femme) — une étape optionnelle qui affinera ensuite vos recettes et votre liste de courses.
+      </p>
+    </div>
+
+    <div class="bg-navy-900 border border-gold-500/20 rounded-sm shadow-2xl p-6 sm:p-10 fade-in-up">
+      <div class="space-y-8">
+
+        <!-- Sexe -->
+        <div>
+          <label class="block text-xs uppercase tracking-widest text-gold-400 mb-3">Sexe</label>
+          <div class="grid grid-cols-2 gap-4">
+            <button type="button" data-sex="homme" onclick="calSelectSex('homme')" class="cal-sex-btn p-4 bg-navy-950 border border-gold-500/20 hover:border-gold-400 rounded-sm text-sm tracking-wide transition-all duration-300">Homme</button>
+            <button type="button" data-sex="femme" onclick="calSelectSex('femme')" class="cal-sex-btn p-4 bg-navy-950 border border-gold-500/20 hover:border-gold-400 rounded-sm text-sm tracking-wide transition-all duration-300">Femme</button>
+          </div>
+        </div>
+
+        <!-- Âge / Poids / Taille -->
+        <div class="grid sm:grid-cols-3 gap-6">
+          <div>
+            <label class="block text-xs uppercase tracking-widest text-gold-400 mb-2">Âge (ans)</label>
+            <input type="number" id="cal-age" min="15" max="90" placeholder="30" class="w-full bg-navy-950 border border-gold-500/20 text-cream p-4 text-sm focus:border-gold-400 transition-colors">
+          </div>
+          <div>
+            <label class="block text-xs uppercase tracking-widest text-gold-400 mb-2">Poids (kg)</label>
+            <input type="number" id="cal-weight" min="30" max="250" step="0.1" placeholder="70" class="w-full bg-navy-950 border border-gold-500/20 text-cream p-4 text-sm focus:border-gold-400 transition-colors">
+          </div>
+          <div>
+            <label class="block text-xs uppercase tracking-widest text-gold-400 mb-2">Taille (cm)</label>
+            <input type="number" id="cal-height" min="120" max="230" placeholder="175" class="w-full bg-navy-950 border border-gold-500/20 text-cream p-4 text-sm focus:border-gold-400 transition-colors">
+          </div>
+        </div>
+
+        <!-- Niveau d'activité -->
+        <div>
+          <label class="block text-xs uppercase tracking-widest text-gold-400 mb-2">Niveau d'activité</label>
+          <select id="cal-activity" class="w-full bg-navy-950 border border-gold-500/20 text-cream p-4 text-sm focus:border-gold-400 transition-colors">
+            <option value="1.2">Sédentaire — peu ou pas d'exercice</option>
+            <option value="1.375">Légèrement actif — exercice léger 1 à 3j/semaine</option>
+            <option value="1.55" selected>Modérément actif — exercice modéré 3 à 5j/semaine</option>
+            <option value="1.725">Très actif — exercice intense 6 à 7j/semaine</option>
+            <option value="1.9">Extrêmement actif — exercice très intense, travail physique</option>
+          </select>
+        </div>
+
+        <!-- Objectif -->
+        <div>
+          <label class="block text-xs uppercase tracking-widest text-gold-400 mb-3">Votre objectif</label>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <button type="button" data-goal="perte-poids" onclick="calSelectGoal('perte-poids')" class="cal-goal-btn flex flex-col items-center gap-2 p-4 bg-navy-950 border border-gold-500/20 hover:border-gold-400 rounded-sm text-xs tracking-wide transition-all duration-300">
+              <i data-lucide="target" class="w-5 h-5"></i> Perte de poids
+            </button>
+            <button type="button" data-goal="prise-masse" onclick="calSelectGoal('prise-masse')" class="cal-goal-btn flex flex-col items-center gap-2 p-4 bg-navy-950 border border-gold-500/20 hover:border-gold-400 rounded-sm text-xs tracking-wide transition-all duration-300">
+              <i data-lucide="zap" class="w-5 h-5"></i> Prise de masse
+            </button>
+            <button type="button" data-goal="maintien" onclick="calSelectGoal('maintien')" class="cal-goal-btn flex flex-col items-center gap-2 p-4 bg-navy-950 border border-gold-500/20 hover:border-gold-400 rounded-sm text-xs tracking-wide transition-all duration-300">
+              <i data-lucide="heart-pulse" class="w-5 h-5"></i> Tonique &amp; Musclé
+            </button>
+          </div>
+        </div>
+
+        <p id="cal-error" class="hidden text-xs text-gold-300 bg-gold-500/10 border border-gold-400/30 p-4 rounded-sm"></p>
+
+        <button type="button" onclick="calculateCalories()" class="w-full bg-gold-500 text-navy-950 font-semibold py-4 text-xs tracking-widest-xl uppercase hover:bg-gold-400 transition-all shadow-lg">
+          Calculer mes besoins
+        </button>
+      </div>
+
+      <!-- Résultats -->
+      <div id="calorie-results" class="hidden mt-10 pt-10 border-t border-gold-500/20"></div>
+
+      <p class="mt-8 text-[11px] text-cream/40 leading-relaxed">
+        Estimation indicative basée sur l'équation de Harris-Benedict, réévaluée par Roza et Shizgal (1984). Elle ne remplace pas un avis médical ou un bilan individualisé.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= PONT VERS PROGRAMMES ========================= -->
+<section class="py-16 bg-cream relative border-t border-navy-900/10">
+  <div class="max-w-4xl mx-auto px-6 lg:px-10">
+    <div class="bg-navy-950 text-cream rounded-sm border border-gold-500/20 p-8 sm:p-10 flex flex-col sm:flex-row items-center justify-between gap-6 fade-in-up">
+      <div>
+        <p class="font-serif text-xl text-gold-300 mb-1">Prêt(e) à voir les formules en détail ?</p>
+        <p class="text-xs text-cream/60">Consultez nos 3 programmes et leurs tarifs, puis revenez ici pour nous contacter.</p>
+      </div>
+      <a href="programmes.html" class="shrink-0 inline-flex items-center gap-2 bg-gold-500 text-navy-950 hover:bg-gold-400 font-semibold px-6 py-3 text-xs tracking-widest-xl uppercase transition-all duration-300 whitespace-nowrap">
+        Voir nos Programmes &amp; Tarifs
+      </a>
+    </div>
+  </div>
+</section>
+<!-- ========================= CONTACT ========================= -->
+<section id="contact" class="py-24 bg-navy-950 text-cream relative noise-overlay">
+  <div class="max-w-3xl mx-auto px-6 lg:px-10">
+    
+    <div class="text-center mb-12 fade-in-up">
+      <span class="text-gold-400 text-xs tracking-widest-xl uppercase block mb-2">Premier Contact</span>
+      <h2 class="font-serif text-3xl sm:text-4xl text-cream">Débuter votre parcours</h2>
+      <div class="gold-divider center mx-auto mt-4"></div>
+      <p class="mt-4 text-sm text-cream/70">Remplissez ce formulaire pour échanger sur vos objectifs et sélectionner la formule adaptée.</p>
+    </div>
+
+    <form id="contact-form" onsubmit="return handleContactSubmit(event)" class="space-y-6 bg-navy-900 p-8 sm:p-12 rounded-sm border border-gold-500/20 shadow-2xl fade-in-up">
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-xs uppercase tracking-widest text-gold-400 mb-2">Nom &amp; Prénom *</label>
+          <input type="text" class="w-full bg-navy-950 border border-gold-500/20 text-cream p-4 text-sm focus:border-gold-400 transition-colors" placeholder="Jean Dupont" required>
+        </div>
+        <div>
+          <label class="block text-xs uppercase tracking-widest text-gold-400 mb-2">Téléphone *</label>
+          <input type="tel" class="w-full bg-navy-950 border border-gold-500/20 text-cream p-4 text-sm focus:border-gold-400 transition-colors" placeholder="06 00 00 00 00" required>
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-xs uppercase tracking-widest text-gold-400 mb-2">Email *</label>
+        <input type="email" class="w-full bg-navy-950 border border-gold-500/20 text-cream p-4 text-sm focus:border-gold-400 transition-colors" placeholder="jean@exemple.com" required>
+      </div>
+
+      <div>
+        <label class="block text-xs uppercase tracking-widest text-gold-400 mb-2">Programme souhaité</label>
+        <select id="contact-programme-select" class="w-full bg-navy-950 border border-gold-500/20 text-cream p-4 text-sm focus:border-gold-400 transition-colors">
+          <option>Le Guide Stratégique (30 €)</option>
+          <option>Le Programme Individuel (Abonnement Mensuel)</option>
+          <option>Le Programme Global - Santé &amp; Esthétique (Abonnement Mensuel)</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block text-xs uppercase tracking-widest text-gold-400 mb-2">Votre objectif principal</label>
+        <textarea id="contact-objectif-textarea" rows="3" class="w-full bg-navy-950 border border-gold-500/20 text-cream p-4 text-sm focus:border-gold-400 transition-colors" placeholder="Décrivez brièvement vos attentes (vitalité, soin de peau, préparation physique, organisation...)"></textarea>
+      </div>
+
+      <button type="submit" class="w-full bg-gold-500 text-navy-950 font-semibold py-4 text-xs tracking-widest-xl uppercase hover:bg-gold-400 transition-all shadow-lg">
+        Envoyer ma demande
+      </button>
+    </form>
+
+    <div id="contact-success" class="hidden bg-navy-900 p-8 sm:p-12 rounded-sm border border-gold-500/20 shadow-2xl text-center fade-in-up">
+      <div class="w-14 h-14 rounded-full bg-gold-500/10 border border-gold-400/40 flex items-center justify-center text-gold-300 mx-auto mb-6">
+        <i data-lucide="check" class="w-7 h-7"></i>
+      </div>
+      <h3 class="font-serif text-2xl text-gold-300 mb-2">Merci !</h3>
+      <p class="text-sm text-cream/70">Votre demande a bien été enregistrée. Nous vous recontactons sous 24h.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========================= FOOTER ========================= -->
+<footer class="bg-navy-950 text-cream/60 py-12 border-t border-gold-500/10 text-xs">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 flex flex-col sm:flex-row justify-between items-center gap-6">
+    <div class="flex items-center gap-3">
+      <span class="flex items-center justify-center w-7 h-7 rounded-full border border-gold-400/60 text-gold-400">
+        <i data-lucide="sparkles" class="w-3 h-3"></i>
+      </span>
+      <span class="font-serif text-sm text-cream">Executive Wellness Club</span>
+    </div>
+    <p>© 2026 Executive Wellness. Tous droits réservés.</p>
+  </div>
+</footer>
+
+<!-- ========================= SCRIPTS ========================= -->
+<script>
+  // Icons
+  lucide.createIcons();
+
+  // Mobile Menu
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const iconMenu = document.getElementById('icon-menu');
+  const iconClose = document.getElementById('icon-close');
+
+  menuToggle.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    iconMenu.classList.toggle('hidden', isOpen);
+    iconClose.classList.toggle('hidden', !isOpen);
+  });
+
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      iconMenu.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+    });
+  });
+
+  // Animations Scroll
+  const observerOptions = { threshold: 0.1 };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+  
+  // ===== PERSONAS QUIZ =====
+  function selectPersona(offerType, personaName) {
+    const callout = document.getElementById('persona-callout');
+    const calloutText = document.getElementById('callout-text');
+    const calloutLink = document.getElementById('callout-link');
+
+    // Mapping des messages
+    const messages = {
+      'guide': `Commence avec notre Guide Stratégique (30€) pour les fondations. Tu pourras upgrader ensuite selon tes progrès.`,
+      'individuel': `Le Programme Individuel est parfait pour ${personaName.toLowerCase()}. Bilan sanguin + suivi sport/nutrition adapté chaque mois.`,
+      'global': `Le Programme Global est ta solution complète : tout l'Individuel + peptides cosméceutiques + protocoles esthétiques prioritaires.`
+    };
+
+    const offerToProgramme = {
+      'guide': 'Le Guide Stratégique (30 €)',
+      'individuel': 'Le Programme Individuel (Abonnement Mensuel)',
+      'global': 'Le Programme Global - Santé & Esthétique (Abonnement Mensuel)',
+    };
+
+    // Affiche le callout
+    calloutText.innerText = messages[offerType];
+    if (calloutLink) {
+      calloutLink.href = `programmes.html?offre=${offerType}`;
+    }
+    callout.classList.remove('hidden');
+
+    // Mémorise le programme suggéré pour le formulaire de contact (même page, plus bas)
+    const selectForm = document.getElementById('contact-programme-select');
+    if (selectForm) {
+      selectForm.value = offerToProgramme[offerType];
+    }
+
+    // Scroll vers le calculateur de calories, l'étape suivante du parcours
+    setTimeout(() => {
+      const calSection = document.getElementById('calculateur-calories');
+      const headerHeight = 100;
+      const offsetTop = calSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+      window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+    }, 500);
+  }
+
+  // ===== MENU "OUTILS" (survol desktop + clic/tap pour écrans tactiles) =====
+
+  function toggleToolsMenu(event) {
+    event.stopPropagation();
+    const panel = document.getElementById('tools-menu-panel');
+    const btn = document.getElementById('tools-menu-btn');
+    const isOpen = panel.style.display === 'block';
+    panel.style.display = isOpen ? '' : 'block';
+    btn.setAttribute('aria-expanded', String(!isOpen));
+  }
+
+  document.addEventListener('click', (e) => {
+    const panel = document.getElementById('tools-menu-panel');
+    const btn = document.getElementById('tools-menu-btn');
+    if (panel.style.display === 'block' && !panel.contains(e.target) && !btn.contains(e.target)) {
+      panel.style.display = '';
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // ===== FORMULAIRE DE CONTACT =====
+
+  function handleContactSubmit(event) {
+    event.preventDefault();
+    document.getElementById('contact-form').classList.add('hidden');
+    const success = document.getElementById('contact-success');
+    success.classList.remove('hidden');
+    lucide.createIcons();
+    success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return false;
+  }
+
+  // ===== CALCULATEUR MÉTABOLISME & BESOINS CALORIQUES =====
+
+  const calState = { sex: null, goal: null };
+
+  const calGoalConfig = {
+    'perte-poids': {
+      label: 'Perte de poids',
+      deltaPercent: -0.20,
+      proteinPerKg: 2.2,
+      fatPercent: 0.25,
+      note: "Déficit calorique modéré (-20% sous votre dépense totale) pour une perte de poids progressive et durable, en préservant la masse musculaire.",
+    },
+    'prise-masse': {
+      label: 'Prise de masse',
+      deltaPercent: 0.12,
+      proteinPerKg: 2.0,
+      fatPercent: 0.25,
+      note: "Surplus calorique modéré (+12% au-dessus de votre dépense totale) pour favoriser la prise de muscle en limitant le gain de masse grasse.",
+    },
+    maintien: {
+      label: 'Tonique & Musclé',
+      deltaPercent: 0,
+      proteinPerKg: 1.8,
+      fatPercent: 0.30,
+      note: "Apport calorique au maintien (dépense totale), avec un ratio protéique élevé pour soutenir la tonicité et la recomposition corporelle.",
+    },
+  };
+
+  function calSelectSex(sex) {
+    calState.sex = sex;
+    document.querySelectorAll('.cal-sex-btn').forEach(btn => {
+      const isActive = btn.dataset.sex === sex;
+      btn.classList.toggle('border-gold-400', isActive);
+      btn.classList.toggle('bg-gold-500/10', isActive);
+      btn.classList.toggle('text-gold-300', isActive);
+    });
+  }
+
+  function calSelectGoal(goal) {
+    calState.goal = goal;
+    document.querySelectorAll('.cal-goal-btn').forEach(btn => {
+      const isActive = btn.dataset.goal === goal;
+      btn.classList.toggle('border-gold-400', isActive);
+      btn.classList.toggle('bg-gold-500/10', isActive);
+      btn.classList.toggle('text-gold-300', isActive);
+    });
+  }
+
+  function calMacroRow(icon, label, grams, kcalPerGram) {
+    return `
+      <div class="flex items-center gap-3 p-4 bg-navy-950 border border-gold-500/10 rounded-sm">
+        <div class="w-9 h-9 shrink-0 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-300">
+          <i data-lucide="${icon}" class="w-4 h-4"></i>
+        </div>
+        <div>
+          <span class="block text-[10px] uppercase tracking-widest text-gold-400">${label}</span>
+          <span class="block font-serif text-xl text-cream leading-tight">${grams} g <span class="text-xs text-cream/50 font-sans">(${Math.round(grams * kcalPerGram)} kcal)</span></span>
+        </div>
+      </div>
+    `;
+  }
+
+  function calculateCalories() {
+    const errorEl = document.getElementById('cal-error');
+    const age = parseFloat(document.getElementById('cal-age').value);
+    const weight = parseFloat(document.getElementById('cal-weight').value);
+    const height = parseFloat(document.getElementById('cal-height').value);
+    const activity = parseFloat(document.getElementById('cal-activity').value);
+
+    const missing = [];
+    if (!calState.sex) missing.push('votre sexe');
+    if (!age || age < 15 || age > 90) missing.push('un âge valide (15-90 ans)');
+    if (!weight || weight < 30 || weight > 250) missing.push('un poids valide (30-250 kg)');
+    if (!height || height < 120 || height > 230) missing.push('une taille valide (120-230 cm)');
+    if (!calState.goal) missing.push('votre objectif');
+
+    if (missing.length) {
+      errorEl.innerText = `Merci de renseigner : ${missing.join(', ')}.`;
+      errorEl.classList.remove('hidden');
+      return;
+    }
+    errorEl.classList.add('hidden');
+
+    const bmr = calState.sex === 'homme'
+      ? 88.362 + 13.397 * weight + 4.799 * height - 5.677 * age
+      : 447.593 + 9.247 * weight + 3.098 * height - 4.330 * age;
+
+    const tdee = bmr * activity;
+    const goal = calGoalConfig[calState.goal];
+    const target = tdee * (1 + goal.deltaPercent);
+
+    const proteinG = Math.round(weight * goal.proteinPerKg);
+    const proteinKcal = proteinG * 4;
+    const fatKcal = target * goal.fatPercent;
+    const fatG = Math.round(fatKcal / 9);
+    const carbKcal = Math.max(target - proteinKcal - fatKcal, 0);
+    const carbG = Math.round(carbKcal / 4);
+
+    const results = document.getElementById('calorie-results');
+    results.innerHTML = `
+      <h3 class="font-serif text-2xl sm:text-3xl text-gold-300 mb-6">Votre estimation personnalisée</h3>
+
+      <div class="grid sm:grid-cols-3 gap-4 mb-6">
+        <div class="p-5 bg-navy-950 border border-gold-500/10 rounded-sm text-center">
+          <i data-lucide="flame" class="w-5 h-5 text-gold-400 mx-auto mb-2"></i>
+          <span class="block text-[10px] uppercase tracking-widest text-cream/50 mb-1">Métabolisme de base</span>
+          <span class="block font-serif text-2xl text-cream">${Math.round(bmr)} kcal</span>
+        </div>
+        <div class="p-5 bg-navy-950 border border-gold-500/10 rounded-sm text-center">
+          <i data-lucide="activity" class="w-5 h-5 text-gold-400 mx-auto mb-2"></i>
+          <span class="block text-[10px] uppercase tracking-widest text-cream/50 mb-1">Dépense totale (maintien)</span>
+          <span class="block font-serif text-2xl text-cream">${Math.round(tdee)} kcal</span>
+        </div>
+        <div class="p-5 bg-gold-500/10 border border-gold-400/40 rounded-sm text-center">
+          <i data-lucide="target" class="w-5 h-5 text-gold-300 mx-auto mb-2"></i>
+          <span class="block text-[10px] uppercase tracking-widest text-gold-300 mb-1">Besoin pour "${goal.label}"</span>
+          <span class="block font-serif text-2xl text-gold-300">${Math.round(target)} kcal</span>
+        </div>
+      </div>
+
+      <p class="text-xs text-cream/60 leading-relaxed mb-6">${goal.note}</p>
+
+      <h4 class="text-xs uppercase tracking-widest text-gold-400 font-semibold mb-4">Répartition suggérée des macronutriments</h4>
+      <div class="grid sm:grid-cols-3 gap-4 mb-8">
+        ${calMacroRow('beef', 'Protéines', proteinG, 4)}
+        ${calMacroRow('wheat', 'Glucides', carbG, 4)}
+        ${calMacroRow('droplet', 'Lipides', fatG, 9)}
+      </div>
+
+      <a href="recettes.html" class="flex items-center justify-between gap-3 bg-gold-500/10 border border-gold-400/30 text-gold-300 px-5 py-4 rounded-sm mb-6 hover:bg-gold-500/20 hover:border-gold-400 transition-colors duration-300 group">
+        <span class="text-xs sm:text-sm flex items-center gap-2"><i data-lucide="chef-hat" class="w-4 h-4 shrink-0"></i> Voir des recettes adaptées à cet objectif</span>
+        <span class="text-[10px] sm:text-xs uppercase tracking-widest font-medium flex items-center gap-1 shrink-0 whitespace-nowrap">Mes recettes &amp; courses <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i></span>
+      </a>
+
+      <div class="bg-navy-950 border border-gold-500/20 p-6 rounded-sm flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div>
+          <p class="font-serif text-lg text-gold-300 mb-1">Un suivi nutritionnel ajusté chaque mois</p>
+          <p class="text-xs text-cream/60">Le Programme Individuel affine cette estimation à partir de votre bilan biologique complet.</p>
+        </div>
+        <button onclick="calApplyToContact()" class="shrink-0 inline-flex items-center gap-2 border border-gold-400/50 text-gold-300 hover:bg-gold-500/10 hover:border-gold-400 font-semibold px-6 py-3 text-xs tracking-widest-xl uppercase transition-all duration-300 whitespace-nowrap">
+          Être accompagné(e)
+        </button>
+      </div>
+    `;
+    results.classList.remove('hidden');
+    lucide.createIcons();
+
+    calState.lastTarget = Math.round(target);
+    calState.lastGoalLabel = goal.label;
+    calState.lastGoalKey = calState.goal;
+    calState.lastProteinG = proteinG;
+    calState.lastCarbG = carbG;
+    calState.lastFatG = fatG;
+
+    // Transmet le résultat à la page "Recettes & Courses" (page distincte)
+    sessionStorage.setItem('ewc_calorieBudget', JSON.stringify({
+      lastTarget: calState.lastTarget,
+      lastGoalLabel: calState.lastGoalLabel,
+      lastGoalKey: calState.lastGoalKey,
+      lastProteinG: calState.lastProteinG,
+      lastCarbG: calState.lastCarbG,
+      lastFatG: calState.lastFatG,
+    }));
+  }
+
+  function calApplyToContact() {
+    const selectForm = document.getElementById('contact-programme-select');
+    if (selectForm) {
+      selectForm.value = 'Le Programme Individuel (Abonnement Mensuel)';
+    }
+
+    const textarea = document.getElementById('contact-objectif-textarea');
+    if (textarea && calState.lastTarget) {
+      textarea.value = `Calculateur calories : objectif "${calState.lastGoalLabel}", besoin estimé à ${calState.lastTarget} kcal/jour.`;
+    }
+
+    setTimeout(() => {
+      const contactSection = document.getElementById('contact');
+      const headerHeight = 100;
+      const offsetTop = contactSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+      window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+    }, 100);
+  }
+
+  // ===== PRÉREMPLISSAGE DU CONTACT DEPUIS UNE AUTRE PAGE =====
+  (function() {
+    const raw = sessionStorage.getItem('ewc_contactPrefill');
+    if (!raw) return;
+    sessionStorage.removeItem('ewc_contactPrefill');
+    try {
+      const data = JSON.parse(raw);
+      const selectForm = document.getElementById('contact-programme-select');
+      if (selectForm && data.programme) selectForm.value = data.programme;
+      const textarea = document.getElementById('contact-objectif-textarea');
+      if (textarea && data.objectif) textarea.value = data.objectif;
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          const contactSection = document.getElementById('contact');
+          const headerHeight = 100;
+          const offsetTop = contactSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+          window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+        }, 150);
+      });
+    } catch (e) { /* ignore */ }
+  })();
+</script>
+
+</body>
+</html>
