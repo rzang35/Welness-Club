@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guide des Soins Esthétiques | Executive Wellness Club</title>
+<meta name="description" content="Guide explicatif des soins esthétiques les plus courants en complément de votre programme : principe, bénéfices et profil idéal, pour le visage comme pour le corps.">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          navy: {
+            950: '#050b14',
+            900: '#0a1628',
+            800: '#0e2038',
+            700: '#14294a',
+            600: '#1c3357',
+            500: '#2a4770',
+          },
+          sage: {
+            700: '#354d40',
+            600: '#43604f',
+            500: '#59795f',
+            400: '#7c9885',
+            300: '#a3bcab',
+            100: '#e6ede8',
+          },
+          gold: {
+            600: '#a9873f',
+            500: '#c9a86a',
+            400: '#d9c08f',
+            300: '#e8d7ae',
+            100: '#f6efdd',
+          },
+          cream: '#faf8f2',
+        },
+        fontFamily: {
+          serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+          sans: ['"Jost"', 'system-ui', 'sans-serif'],
+        },
+      }
+    }
+  }
+</script>
+
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Jost', system-ui, sans-serif; background-color: #faf8f2; color: #0a1628; }
+  h1, h2, h3, h4, .font-serif-display { font-family: 'Cormorant Garamond', Georgia, serif; }
+  .tracking-widest-xl { letter-spacing: 0.25em; }
+  .gold-divider.center { background: #c9a86a; width: 56px; height: 2px; }
+  ::selection { background: #c9a86a; color: #0a1628; }
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: #faf8f2; }
+  ::-webkit-scrollbar-thumb { background: #0a1628; border-radius: 6px; }
+  .card-hover { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease; }
+  .card-hover:hover { transform: translateY(-6px); box-shadow: 0 24px 48px -12px rgba(10, 22, 40, 0.18); }
+  #mobile-menu { transition: max-height 0.4s ease, opacity 0.3s ease; max-height: 0; opacity: 0; overflow: hidden; }
+  #mobile-menu.open { max-height: 480px; opacity: 1; }
+  .bg-hero-gradient {
+    background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(89,121,95,0.35), transparent 60%), linear-gradient(180deg, #050b14 0%, #0a1628 55%, #0e2038 100%);
+  }
+</style>
+</head>
+
+<body class="bg-cream text-navy-900 antialiased">
+
+<!-- ========================= HEADER / NAV ========================= -->
+<header class="relative w-full bg-navy-950 border-b border-gold-500/10">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="flex items-center justify-between h-20 lg:h-24">
+
+      <a href="index.html#accueil" class="flex items-center gap-3 group">
+        <span class="flex items-center justify-center w-9 h-9 rounded-full border border-gold-400/60 text-gold-400">
+          <i data-lucide="sparkles" class="w-4 h-4"></i>
+        </span>
+        <span class="flex flex-col leading-none">
+          <span class="font-serif text-lg lg:text-xl tracking-wide text-cream">Executive Wellness</span>
+          <span class="text-[10px] tracking-widest-xl text-gold-400/80 uppercase mt-1">Longevity &amp; Performance</span>
+        </span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-10 text-sm tracking-wide text-cream/80">
+        <a href="index.html#accueil" class="hover:text-gold-400 transition-colors duration-300">Accueil</a>
+        <a href="index.html#piliers" class="hover:text-gold-400 transition-colors duration-300">Les 3 Piliers</a>
+        <a href="soins-esthetiques.html" class="text-gold-300 font-medium">Guide des Soins</a>
+        <a href="index.html#programmes" class="hover:text-gold-400 transition-colors duration-300">Programmes</a>
+      </nav>
+
+      <a href="index.html#contact" class="hidden lg:inline-flex items-center gap-2 bg-gold-500 text-navy-950 hover:bg-gold-400 font-semibold px-6 py-3 text-xs tracking-widest-xl uppercase transition-all duration-300 shadow-md hover:shadow-lg">
+        Prendre contact
+      </a>
+
+      <button id="menu-toggle" aria-label="Ouvrir le menu" class="lg:hidden text-cream">
+        <i data-lucide="menu" id="icon-menu" class="w-7 h-7"></i>
+        <i data-lucide="x" id="icon-close" class="w-7 h-7 hidden"></i>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="lg:hidden bg-navy-950 border-t border-gold-500/10">
+    <nav class="flex flex-col px-6 py-6 gap-5 text-cream/85 text-sm tracking-wide">
+      <a href="index.html#accueil" class="py-1">Accueil</a>
+      <a href="index.html#piliers" class="py-1">Les 3 Piliers</a>
+      <a href="soins-esthetiques.html" class="py-1 text-gold-300">Guide des Soins</a>
+      <a href="index.html#programmes" class="py-1">Programmes</a>
+      <a href="index.html#contact" class="mt-2 inline-flex justify-center items-center bg-gold-500 text-navy-950 font-semibold px-6 py-3 text-xs tracking-widest-xl uppercase">
+        Prendre contact
+      </a>
+    </nav>
+  </div>
+</header>
+
+<!-- ========================= HERO ========================= -->
+<section class="relative bg-hero-gradient overflow-hidden py-20 lg:py-28">
+  <div class="relative max-w-4xl mx-auto px-6 lg:px-10 text-center">
+    <span class="inline-flex items-center gap-2 mb-6 bg-navy-900/80 border border-gold-500/20 px-4 py-2 rounded-full text-gold-300 text-xs tracking-widest-xl uppercase">
+      Pilier Beauté
+    </span>
+    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl leading-[1.1] text-cream font-medium">
+      Le guide des soins esthétiques
+    </h1>
+    <p class="mt-6 text-base sm:text-lg text-cream/75 max-w-2xl mx-auto leading-relaxed font-light">
+      Un tour d'horizon simple des soins les plus demandés en complément de votre routine : leur principe, leurs bénéfices, et pour qui ils sont pertinents.
+    </p>
+  </div>
+</section>
+
+<!-- ========================= AVERTISSEMENT ========================= -->
+<section class="bg-cream py-8 border-b border-navy-900/10">
+  <div class="max-w-4xl mx-auto px-6 lg:px-10">
+    <p class="text-xs text-navy-900/60 leading-relaxed text-center">
+      <i data-lucide="info" class="w-3.5 h-3.5 inline-block -mt-0.5 text-gold-600"></i>
+      Ce guide est informatif et ne remplace pas une consultation. Les soins injectables sont des actes médicaux, réalisés exclusivement par des praticiens qualifiés, sur recommandation dans le cadre du Programme Global.
+    </p>
+  </div>
+</section>
+
+<!-- ========================= FILTRES ========================= -->
+<section class="py-14 bg-cream">
+  <div class="max-w-6xl mx-auto px-6 lg:px-10">
+
+    <div class="flex flex-wrap justify-center gap-4 mb-14">
+      <button type="button" data-filter="all" onclick="filterSoins('all')" class="soin-filter-btn px-6 py-3 text-xs uppercase tracking-widest border border-navy-900/20 rounded-full hover:border-gold-500 transition-all duration-300">Tous les soins</button>
+      <button type="button" data-filter="visage" onclick="filterSoins('visage')" class="soin-filter-btn px-6 py-3 text-xs uppercase tracking-widest border border-navy-900/20 rounded-full hover:border-gold-500 transition-all duration-300">Visage &amp; Teint</button>
+      <button type="button" data-filter="injectable" onclick="filterSoins('injectable')" class="soin-filter-btn px-6 py-3 text-xs uppercase tracking-widest border border-navy-900/20 rounded-full hover:border-gold-500 transition-all duration-300">Médico-Esthétique</button>
+      <button type="button" data-filter="corps" onclick="filterSoins('corps')" class="soin-filter-btn px-6 py-3 text-xs uppercase tracking-widest border border-navy-900/20 rounded-full hover:border-gold-500 transition-all duration-300">Corps &amp; Silhouette</button>
+    </div>
+
+    <!-- ===== VISAGE & TEINT ===== -->
+    <div class="soin-group" data-group="visage">
+      <h2 class="font-serif text-2xl sm:text-3xl text-navy-950 mb-2">Visage &amp; Teint</h2>
+      <div class="gold-divider center mb-8"></div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+
+        <div class="soin-card bg-white border border-navy-900/10 rounded-sm p-6 card-hover">
+          <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-600 mb-4">
+            <i data-lucide="droplets" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-serif text-xl text-navy-950 mb-2">Peeling doux</h3>
+          <p class="text-xs text-navy-900/60 mb-4 leading-relaxed">Exfoliation contrôlée (acides de fruits, salicylique) qui relance le renouvellement cellulaire.</p>
+          <ul class="space-y-1.5 text-xs text-navy-900/80 mb-4">
+            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold-600 shrink-0 mt-0.5"></i>Teint unifié et lumineux</li>
+            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold-600 shrink-0 mt-0.5"></i>Atténuation des taches</li>
+            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold-600 shrink-0 mt-0.5"></i>Pores resserrés</li>
+          </ul>
+          <span class="inline-block text-[10px] uppercase tracking-widest bg-cream border border-navy-900/10 px-3 py-1.5 rounded-full text-navy-900/60">Idéal pour : teint terne, imperfections</span>
+        </div>
+
+        <div class="soin-card bg-white border border-navy-900/10 rounded-sm p-6 card-hover">
+          <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-600 mb-4">
+            <i data-lucide="scan-line" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-serif text-xl text-navy-950 mb-2">Microneedling</h3>
+          <p class="text-xs text-navy-900/60 mb-4 leading-relaxed">Micro-perforations superficielles qui stimulent la production naturelle de collagène.</p>
+          <ul class="space-y-1.5 text-xs text-navy-900/80 mb-4">
+            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold-600 shrink-0 mt-0.5"></i>Cicatrices d'acné atténuées</li>
+            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold-600 shrink-0 mt-0.5"></i>Peau plus ferme et repulpée</li>
+            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold-600 shrink-0 mt-0.5"></i>Meilleure absorption des sérums</li>
+          </ul>
+          <span class="inline-block text-[10px] uppercase tracking-widest bg-cream border border-navy-900/10 px-3 py-1.5 rounded-full text-navy-900/60">Idéal pour : cicatrices, pores dilatés</span>
+        </div>
+
+        <div class="soin-card bg-white border border-navy-900/10 rounded-sm p-6 card-hover">
+          <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-600 mb-4">
+            <i data-lucide="sun-medium" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-serif text-xl text-navy-950 mb-2">LED thérapie</h3>
+          <p class="text-xs text-navy-900/60 mb-4 leading-relaxed">Séance de lumière ciblée (rouge, bleue) sans douleur ni éviction sociale.</p>
+          <ul class="space-y-1.5 text-xs text-navy-900/80 mb-4">
+            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold-600 shrink-0 mt-0.5"></i>Apaise l'acné et les inflammations</li>
+            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold-600 shrink-0 mt-0.5"></i>Stimule le collagène</li>
+            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold-600 shrink-0 mt-0.5"></i>Accélère la cicatrisation</li>
+          </ul>
+          <span class="inline-block text-[10px] uppercase tracking-widest bg-cream border border-navy-900/10 px-3 py-1.5 rounded-full text-navy-900/60">Idéal pour : peaux sensibles, acné</span>
+        </div>
+
+        <div class="soin-card bg-white border border-navy-900/10 rounded-sm p-6 card-hover">
+          <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-600 mb-4">
+            <i data-lucide="zap" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-serif text-xl text-navy-950 mb-2">Radiofréquence faciale</h3>
+          <p class="text-xs text-navy-900/60 mb-4 leading-relaxed">Chaleur profonde qui resserre les fibres de collagène existantes, sans aiguille.</p>
+          <ul class="space-y-1.5 text-xs text-navy-900/80 mb-4">
+            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold-600 shrink-0 mt-0.5"></i>Effet tenseur immédiat</li>
+            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold-600 shrink-0 mt-0.5"></i>Fermeté progressive</li>
+            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold-600 shrink-0 mt-0.5"></i>Aucune éviction sociale</li>
+          </ul>
+          <span class="inline-block text-[10px] uppercase tracking-widest bg-cream border border-navy-900/10 px-3 py-1.5 rounded-full text-navy-900/60">Idéal pour : relâchement léger, ovale du visage</span>
+        </div>
+
+        <div class="soin-card bg-white border border-navy-900/10 rounded-sm p-6 card-hover">
+          <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-600 mb-4">
+            <i data-lucide="sparkles" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-serif text-xl text-navy-950 mb-2">Hydrafacial</h3>
+          <p class="text-xs text-navy-900/60 mb-4 leading-relaxed">Nettoyage, exfoliation et hydratation profonde réalisés en une seule séance.</p>
+          <ul class="space-y-1.5 text-xs text-navy-900/80 mb-4">
+            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold-600 shrink-0 mt-0.5"></i>Éclat immédiat</li>
+            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold-600 shrink-0 mt-0.5"></i>Pores désincrustés en douceur</li>
+            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold-600 shrink-0 mt-0.5"></i>Hydratation en profondeur</li>
+          </ul>
+          <span class="inline-block text-[10px] uppercase tracking-widest bg-cream border border-navy-900/10 px-3 py-1.5 rounded-full text-navy-900/60">Idéal pour : entretien régulier, avant un événement</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===== MÉDICO-ESTHÉTIQUE ===== -->
+    <div class="soin-group" data-group="injectable">
+      <h2 class="font-serif text-2xl sm:text-3xl text-navy-950 mb-2">Médico-Esthétique</h2>
+      <div class="gold-divider center mb-8"></div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+
+        <div class="soin-card bg-white border border-navy-900/10 rounded-sm p-6 card-hover">
+          <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-600 mb-4">
+            <i data-lucide="syringe" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-serif text-xl text-navy-950 mb-2">Acide hyaluronique</h3>
+          <p class="text-xs text-navy-900/60 mb-4 leading-relaxed">Injection d'un gel résorbable pour restaurer les volumes et l'hydratation du visage.</p>
+          <ul class="space-y-1.5 text-xs text-navy-900/80 mb-4">
+            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold-600 shrink-0 mt-0.5"></i>Comblement des rides et sillons</li>
+            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold-600 shrink-0 mt-0.5"></i>Redéfinition des volumes</li>
+            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold-600 shrink-0 mt-0.5"></i>Résultat naturel et progressif</li>
+          </ul>
+          <span class="inline-block text-[10px] uppercase tracking-widest bg-cream border border-navy-900/10 px-3 py-1.5 rounded-full text-navy-900/60">Idéal pour : perte de volume, cernes creux</span>
+        </div>
+
+        <div class="soin-card bg-white border border-navy-900/10 rounded-sm p-6 card-hover">
+          <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-600 mb-4">
+            <i data-lucide="wand-2" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-serif text-xl text-navy-950 mb-2">Toxine botulique</h3>
+          <p class="text-xs text-navy-900/60 mb-4 leading-relaxed">Détente ciblée des muscles responsables des rides d'expression.</p>
+          <ul class="space-y-1.5 text-xs text-navy-900/80 mb-4">
+            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold-600 shrink-0 mt-0.5"></i>Lissage front, patte d'oie, glabelle</li>
+            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold-600 shrink-0 mt-0.5"></i>Effet préventif sur les rides profondes</li>
+            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold-600 shrink-0 mt-0.5"></i>Résultat visible sous 5 à 10 jours</li>
+          </ul>
+          <span class="inline-block text-[10px] uppercase tracking-widest bg-cream border border-navy-900/10 px-3 py-1.5 rounded-full text-navy-900/60">Idéal pour : rides d'expression, prévention</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===== CORPS & SILHOUETTE ===== -->
+    <div class="soin-group" data-group="corps">
+      <h2 class="font-serif text-2xl sm:text-3xl text-navy-950 mb-2">Corps &amp; Silhouette</h2>
+      <div class="gold-divider center mb-8"></div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <div class="soin-card bg-white border border-navy-900/10 rounded-sm p-6 card-hover">
+          <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-600 mb-4">
+            <i data-lucide="snowflake" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-serif text-xl text-navy-950 mb-2">Cryolipolyse</h3>
+          <p class="text-xs text-navy-900/60 mb-4 leading-relaxed">Élimination ciblée des cellules graisseuses résistantes par le froid contrôlé.</p>
+          <ul class="space-y-1.5 text-xs text-navy-900/80 mb-4">
+            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold-600 shrink-0 mt-0.5"></i>Réduction localisée et durable</li>
+            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold-600 shrink-0 mt-0.5"></i>Sans chirurgie ni éviction</li>
+            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold-600 shrink-0 mt-0.5"></i>Résultats visibles en 6 à 12 semaines</li>
+          </ul>
+          <span class="inline-block text-[10px] uppercase tracking-widest bg-cream border border-navy-900/10 px-3 py-1.5 rounded-full text-navy-900/60">Idéal pour : zones rebelles, en complément du sport</span>
+        </div>
+
+        <div class="soin-card bg-white border border-navy-900/10 rounded-sm p-6 card-hover">
+          <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-600 mb-4">
+            <i data-lucide="waves" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-serif text-xl text-navy-950 mb-2">Drainage lymphatique</h3>
+          <p class="text-xs text-navy-900/60 mb-4 leading-relaxed">Massage manuel ou mécanique qui stimule la microcirculation et l'élimination.</p>
+          <ul class="space-y-1.5 text-xs text-navy-900/80 mb-4">
+            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold-600 shrink-0 mt-0.5"></i>Moins de sensation de jambes lourdes</li>
+            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold-600 shrink-0 mt-0.5"></i>Aspect peau d'orange atténué</li>
+            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold-600 shrink-0 mt-0.5"></i>Détente profonde</li>
+          </ul>
+          <span class="inline-block text-[10px] uppercase tracking-widest bg-cream border border-navy-900/10 px-3 py-1.5 rounded-full text-navy-900/60">Idéal pour : rétention d'eau, récupération sportive</span>
+        </div>
+
+        <div class="soin-card bg-white border border-navy-900/10 rounded-sm p-6 card-hover">
+          <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-600 mb-4">
+            <i data-lucide="flower-2" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-serif text-xl text-navy-950 mb-2">Épilation laser</h3>
+          <p class="text-xs text-navy-900/60 mb-4 leading-relaxed">Traitement du follicule pileux par impulsion lumineuse ciblée, sur plusieurs séances.</p>
+          <ul class="space-y-1.5 text-xs text-navy-900/80 mb-4">
+            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold-600 shrink-0 mt-0.5"></i>Réduction durable de la pilosité</li>
+            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold-600 shrink-0 mt-0.5"></i>Gain de temps au quotidien</li>
+            <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-gold-600 shrink-0 mt-0.5"></i>Peau plus douce, moins d'irritations</li>
+          </ul>
+          <span class="inline-block text-[10px] uppercase tracking-widest bg-cream border border-navy-900/10 px-3 py-1.5 rounded-full text-navy-900/60">Idéal pour : routine beauté simplifiée</span>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========================= CTA ========================= -->
+<section class="py-20 bg-navy-950 text-cream border-t border-gold-500/10">
+  <div class="max-w-3xl mx-auto px-6 lg:px-10 text-center">
+    <h2 class="font-serif text-3xl sm:text-4xl text-cream mb-4">Envie d'intégrer ces soins à votre programme ?</h2>
+    <p class="text-sm text-cream/70 mb-8 max-w-xl mx-auto leading-relaxed">
+      Le Programme Global inclut la prise en charge et la planification de vos soins et protocoles esthétiques recommandés, en complément de votre routine cosméceutique.
+    </p>
+    <div class="flex flex-col sm:flex-row justify-center gap-4">
+      <a href="index.html#programmes" class="inline-flex items-center justify-center gap-2 bg-gold-500 text-navy-950 hover:bg-gold-400 px-8 py-4 text-xs tracking-widest-xl uppercase font-semibold transition-all duration-300 shadow-lg">
+        Voir le Programme Global
+      </a>
+      <a href="index.html#contact" class="inline-flex items-center justify-center gap-2 border border-cream/30 text-cream hover:border-gold-400 hover:text-gold-300 px-8 py-4 text-xs tracking-widest-xl uppercase transition-all duration-300">
+        Prendre contact
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= FOOTER ========================= -->
+<footer class="bg-navy-950 text-cream/60 py-12 border-t border-gold-500/10 text-xs">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 flex flex-col sm:flex-row justify-between items-center gap-6">
+    <div class="flex items-center gap-3">
+      <span class="flex items-center justify-center w-7 h-7 rounded-full border border-gold-400/60 text-gold-400">
+        <i data-lucide="sparkles" class="w-3 h-3"></i>
+      </span>
+      <span class="font-serif text-sm text-cream">Executive Wellness Club</span>
+    </div>
+    <p>© 2026 Executive Wellness. Tous droits réservés.</p>
+  </div>
+</footer>
+
+<!-- ========================= SCRIPTS ========================= -->
+<script>
+  lucide.createIcons();
+
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const iconMenu = document.getElementById('icon-menu');
+  const iconClose = document.getElementById('icon-close');
+
+  menuToggle.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    iconMenu.classList.toggle('hidden', isOpen);
+    iconClose.classList.toggle('hidden', !isOpen);
+  });
+
+  function setActiveFilterBtn(filter) {
+    document.querySelectorAll('.soin-filter-btn').forEach(btn => {
+      const isActive = btn.dataset.filter === filter;
+      btn.classList.toggle('bg-navy-950', isActive);
+      btn.classList.toggle('text-cream', isActive);
+      btn.classList.toggle('border-navy-950', isActive);
+    });
+  }
+
+  function filterSoins(filter) {
+    setActiveFilterBtn(filter);
+    document.querySelectorAll('.soin-group').forEach(group => {
+      group.classList.toggle('hidden', filter !== 'all' && group.dataset.group !== filter);
+    });
+  }
+
+  setActiveFilterBtn('all');
+</script>
+
+</body>
+</html>
