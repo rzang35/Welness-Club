@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nos programmes | Executive Wellness Club</title>
+<meta name="description" content="Trois formules claires et évolutives pour investir sereinement dans votre longévité : Guide stratégique, Programme individuel, Programme global.">
+<meta name="theme-color" content="#060C17">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<script>
+  document.documentElement.classList.add('js');
+  try {
+    var q = new URLSearchParams(location.search).get('lang');
+    var s = q || localStorage.getItem('ewc_lang');
+    if (s === 'en' || s === 'fr') document.documentElement.lang = s;
+  } catch (e) {}
+</script>
+<style>
+/* =========================================================
+   TOKENS
+   ========================================================= */
+:root {
+  --nuit: #060C17;          /* fond principal, bleu marine nuit */
+  --encre: #0B1524;         /* fond secondaire */
+  --abysse: #101D31;        /* surfaces */
+  --creme: #EEE6D5;         /* sections claires */
+  --creme-2: #E4D9C2;
+  --laiton: #B8975F;        /* laiton */
+  --laiton-clair: #D9C092;  /* reflets dorés */
+  --laiton-fonce: #7A5E30;  /* laiton lisible sur crème */
+  --sauge: #8FA294;
+  --rose-erreur: #D99A89;
+
+  --txt: #EDE5D3;
+  --txt-doux: rgba(237, 229, 211, .70);
+  --txt-faible: rgba(237, 229, 211, .48);
+  --ink: #0D1828;
+  --ink-doux: rgba(13, 24, 40, .74);
+  --ink-faible: rgba(13, 24, 40, .52);
+
+  --trait: rgba(217, 192, 146, .16);
+  --trait-fort: rgba(217, 192, 146, .36);
+
+  --serif: "Cormorant Garamond", "Cormorant", Garamond, "Times New Roman", serif;
+  --sans: "Jost", "Futura", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+
+  --ease: cubic-bezier(.2, .7, .1, 1);
+  --header-h: 72px;
+  --gutter: clamp(1.25rem, 5vw, 4rem);
+  --max: 1240px;
+}
+
+/* =========================================================
+   BASE
+   ========================================================= */
+*, *::before, *::after { box-sizing: border-box; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 1rem);
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--txt);
+  background: var(--nuit);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+body.no-scroll { overflow: hidden; }
+
+/* Grain discret sur tout le site */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: .055;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+h1, h2, h3 { font-family: var(--serif); font-weight: 400; margin: 0; }
+p { margin: 0; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+::selection { background: var(--laiton-clair); color: var(--nuit); }
+:focus-visible { outline: 1.5px solid var(--laiton-clair); outline-offset: 3px; }
+
+.wrap { max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.skip {
+  position: fixed; top: .75rem; left: .75rem; z-index: 200;
+  padding: .6rem 1rem; background: var(--laiton-clair); color: var(--nuit);
+  text-decoration: none; transform: translateY(-200%); transition: transform .2s;
+}
+.skip:focus { transform: none; }
+
+/* Libellés : serif italique plutôt que capitales espacées */
+.label {
+  display: block;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.1875rem;
+  line-height: 1.3;
+  color: var(--laiton-clair);
+  margin-bottom: 1rem;
+}
+.sect--cream .label { color: var(--laiton-fonce); }
+
+.h2 {
+  font-size: clamp(2.25rem, 5.5vw, 3.9rem);
+  font-weight: 300;
+  line-height: 1.04;
+  letter-spacing: -.01em;
+}
+.intro { color: var(--txt-doux); max-width: 34rem; margin-top: 1.25rem; }
+.sect--cream .intro { color: var(--ink-doux); }
+
+.sect { position: relative; padding: clamp(5rem, 12vw, 9rem) 0; }
+.sect--cream { background: var(--creme); color: var(--ink); }
+
+/* =========================================================
+   BOUTONS & LIENS
+   ========================================================= */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .6rem;
+  min-height: 3.25rem; padding: .9rem 1.7rem;
+  font: 500 .9375rem/1.1 var(--sans); letter-spacing: .04em;
+  text-decoration: none; text-align: center;
+  border: 1px solid transparent; border-radius: 2px; cursor: pointer;
+  transition: background-color .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease), transform .15s ease;
+}
+.btn:active { transform: scale(.98); }
+.btn--brass { background: var(--laiton-clair); color: var(--nuit); }
+.btn--brass:hover { background: #E7D4AC; }
+.btn--line { border-color: var(--trait-fort); color: var(--txt); background: transparent; }
+.btn--line:hover { border-color: var(--laiton-clair); color: var(--laiton-clair); }
+.btn--ink { background: var(--ink); color: var(--creme); }
+.btn--ink:hover { background: #1B2B45; }
+.btn--ink-line { border-color: rgba(13, 24, 40, .3); color: var(--ink); background: transparent; }
+.btn--ink-line:hover { border-color: var(--ink); }
+.btn[disabled] { opacity: .6; cursor: progress; }
+
+.link {
+  color: var(--laiton-clair);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+  text-decoration-color: rgba(217, 192, 146, .4);
+  transition: text-decoration-color .3s, color .3s;
+  font-weight: 400;
+}
+.link:hover { text-decoration-color: currentColor; }
+.sect--cream .link { color: var(--laiton-fonce); text-decoration-color: rgba(122, 94, 48, .4); }
+
+/* =========================================================
+   EN-TÊTE
+   ========================================================= */
+.hdr {
+  position: fixed; inset: 0 0 auto; z-index: 50; height: var(--header-h);
+  border-bottom: 1px solid transparent;
+  transition: background-color .45s var(--ease), border-color .45s var(--ease);
+}
+.hdr.is-scrolled, .hdr.is-menu {
+  background: rgba(6, 12, 23, .72);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  backdrop-filter: blur(14px) saturate(140%);
+  border-color: var(--trait);
+}
+.hdr__in { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+
+.brand { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
+.brand svg { width: 32px; height: 32px; flex: none; }
+.brand__name { font-family: var(--serif); font-size: 1.25rem; line-height: 1; letter-spacing: .01em; }
+.brand__sub { display: block; font-style: italic; font-size: .95rem; color: var(--laiton-clair); margin-top: .15rem; }
+
+.nav { display: none; }
+.nav a, .tools__btn {
+  color: var(--txt-doux); text-decoration: none; font-size: .9375rem; font-weight: 400;
+  background: none; border: 0; padding: .5rem 0; cursor: pointer;
+  transition: color .3s;
+}
+.nav a:hover, .tools__btn:hover, .nav a[aria-current="true"] { color: var(--txt); }
+.nav a[aria-current="true"] {
+  background: linear-gradient(var(--laiton-clair), var(--laiton-clair)) no-repeat 0 100% / 100% 1px;
+}
+.tools { position: relative; }
+.tools__btn { display: inline-flex; align-items: center; gap: .35rem; }
+.tools__btn svg { width: 12px; height: 12px; transition: transform .3s var(--ease); }
+.tools.is-open .tools__btn svg { transform: rotate(180deg); }
+.tools__panel {
+  position: absolute; top: calc(100% + 14px); left: -1.25rem; min-width: 16rem;
+  padding: .5rem 0;
+  background: rgba(11, 21, 36, .88);
+  -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+  border: 1px solid var(--trait);
+  opacity: 0; visibility: hidden; transform: translateY(-4px);
+  transition: opacity .25s var(--ease), transform .25s var(--ease), visibility .25s;
+}
+.tools__panel::before { content: ""; position: absolute; left: 0; right: 0; top: -16px; height: 16px; }
+.tools.is-open .tools__panel { opacity: 1; visibility: visible; transform: none; }
+@media (hover: hover) {
+  .tools:hover .tools__panel { opacity: 1; visibility: visible; transform: none; }
+}
+.tools__panel a { display: block; padding: .7rem 1.25rem; }
+.tools__panel a:hover { background: rgba(217, 192, 146, .06); color: var(--laiton-clair); }
+
+.hdr__actions { display: flex; align-items: center; gap: .875rem; }
+.hdr__cta { display: none; min-height: 2.6rem; padding: .6rem 1.2rem; font-size: .875rem; }
+
+/* Sélecteur de langue */
+.lang {
+  position: relative; display: inline-flex; padding: 2px;
+  border: 1px solid var(--trait-fort); border-radius: 999px;
+}
+.lang__thumb {
+  position: absolute; top: 2px; bottom: 2px; left: 2px; width: calc(50% - 2px);
+  background: var(--laiton-clair); border-radius: 999px;
+  transition: transform .35s var(--ease);
+}
+.lang[data-lang="en"] .lang__thumb { transform: translateX(100%); }
+.lang button {
+  position: relative; z-index: 1; width: 2.5rem; padding: .42rem 0;
+  font: 500 .75rem/1 var(--sans); letter-spacing: .08em;
+  color: var(--txt-faible); background: none; border: 0; border-radius: 999px; cursor: pointer;
+  transition: color .3s;
+}
+.lang button[aria-pressed="true"] { color: var(--nuit); }
+.lang button:not([aria-pressed="true"]):hover { color: var(--txt); }
+
+/* Bouton menu mobile */
+.burger {
+  width: 44px; height: 44px; display: grid; place-items: center;
+  background: none; border: 0; cursor: pointer; padding: 0;
+}
+.burger span { display: block; width: 22px; height: 1px; background: var(--txt); transition: transform .35s var(--ease); }
+.burger span + span { margin-top: 7px; }
+.burger[aria-expanded="true"] span:first-child { transform: translateY(4px) rotate(45deg); }
+.burger[aria-expanded="true"] span:last-child { transform: translateY(-4px) rotate(-45deg); }
+.burger__lines { display: block; }
+
+/* Menu mobile plein écran */
+.mnav {
+  position: fixed; inset: 0; z-index: 45;
+  padding: calc(var(--header-h) + 2rem) var(--gutter) 2.5rem;
+  background: rgba(6, 12, 23, .95);
+  -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px);
+  display: flex; flex-direction: column; overflow-y: auto;
+  opacity: 0; visibility: hidden; transition: opacity .35s var(--ease), visibility .35s;
+}
+.mnav.is-open { opacity: 1; visibility: visible; }
+.mnav__main a {
+  display: block; padding: .35rem 0; text-decoration: none;
+  font-family: var(--serif); font-size: 2rem; line-height: 1.2; font-weight: 300;
+}
+.mnav__tools { margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1px solid var(--trait); }
+.mnav__tools a { display: block; padding: .45rem 0; color: var(--txt-doux); text-decoration: none; }
+.mnav .btn { margin-top: 2rem; }
+
+@media (min-width: 1040px) {
+  :root { --header-h: 84px; }
+  .nav { display: flex; align-items: center; gap: 2.25rem; }
+  .hdr__cta { display: inline-flex; }
+  .burger, .mnav { display: none; }
+}
+
+/* =========================================================
+   PIED DE PAGE
+   ========================================================= */
+.ftr { padding: 3.5rem 0 2.5rem; border-top: 1px solid var(--trait); font-size: .875rem; color: var(--txt-faible); }
+.ftr__in { display: grid; gap: 2rem; }
+.ftr nav { display: flex; flex-wrap: wrap; gap: .5rem 1.75rem; }
+.ftr nav a { text-decoration: none; color: var(--txt-doux); }
+.ftr nav a:hover { color: var(--laiton-clair); }
+@media (min-width: 900px) {
+  .ftr__in { grid-template-columns: 1fr auto auto; align-items: center; gap: 3rem; }
+}
+
+/* =========================================================
+   PAGES SECONDAIRES : HERO DE PAGE + CADRAN
+   ========================================================= */
+.nav a[aria-current="page"] { color: var(--txt); background: linear-gradient(var(--laiton-clair), var(--laiton-clair)) no-repeat 0 100% / 100% 1px; }
+.tools__panel a[aria-current="page"], .mnav a[aria-current="page"] { color: var(--laiton-clair); }
+
+.phero {
+  position: relative; overflow: hidden;
+  padding: calc(var(--header-h) + clamp(3rem, 8vw, 5.5rem)) 0 clamp(3.5rem, 8vw, 5.5rem);
+  background:
+    radial-gradient(110% 90% at 92% 30%, rgba(143, 162, 148, .11), transparent 55%),
+    radial-gradient(80% 70% at 0% 100%, rgba(184, 151, 95, .07), transparent 60%),
+    var(--nuit);
+  border-bottom: 1px solid var(--trait);
+}
+.phero .wrap { position: relative; z-index: 2; }
+.phero__back {
+  display: inline-flex; align-items: center; gap: .5rem; margin-bottom: 2.25rem;
+  color: var(--txt-faible); text-decoration: none; font-size: .875rem; transition: color .3s;
+}
+.phero__back svg { width: 12px; height: 12px; }
+.phero__back:hover { color: var(--laiton-clair); }
+.phero h1 {
+  font-size: clamp(2.7rem, 8.5vw, 5.6rem);
+  font-weight: 300; line-height: 1; letter-spacing: -.016em;
+  margin: .25rem 0 1.75rem;
+}
+.phero h1 .line { display: block; }
+.phero h1 .line--indent { padding-left: clamp(1.5rem, 8vw, 5.5rem); }
+.phero__lead { max-width: 35rem; color: var(--txt-doux); font-size: 1.125rem; }
+.phero__note { margin-top: 1.25rem; color: var(--txt-faible); font-size: .9375rem; max-width: 35rem; }
+.phero__dial {
+  position: absolute; z-index: 1; pointer-events: none;
+  width: min(560px, 115vw); right: -42%; top: 50%; transform: translateY(-50%);
+  opacity: .22;
+}
+@media (min-width: 1040px) {
+  .phero__dial { width: 500px; right: 4%; opacity: .55; }
+  .phero .wrap > * { max-width: 44rem; }
+}
+
+/* Cadran (partagé) */
+.dial { display: block; width: 100%; height: auto; overflow: visible; }
+.dial .d-ring { fill: none; stroke: var(--laiton); stroke-width: .8; }
+.dial .d-faint { fill: none; stroke: var(--laiton); stroke-width: .5; opacity: .35; }
+.dial .d-rosette ellipse { fill: none; stroke: var(--laiton); stroke-width: .45; opacity: .2; }
+.dial .d-tick { stroke: var(--laiton); stroke-width: .7; opacity: .55; }
+.dial .d-tick--major { stroke: var(--laiton-clair); stroke-width: 1.4; opacity: 1; }
+.dial .hand { transform-box: view-box; transform-origin: 200px 200px; }
+.dial .hand--h, .dial .hand--m { fill: var(--laiton-clair); transition: transform 2.4s var(--ease) .3s; }
+.dial .hand--s line, .dial .hand--s circle { fill: none; stroke: var(--laiton-clair); stroke-width: .9; }
+.dial .hand--s { animation: sweep 60s linear infinite; }
+.dial .d-cap { fill: var(--nuit); stroke: var(--laiton-clair); stroke-width: 1.2; }
+.js .dial .d-ring--draw { stroke-dasharray: 1200; stroke-dashoffset: 1200; transition: stroke-dashoffset 2.6s var(--ease); }
+.js .dial .d-rosette { opacity: 0; transition: opacity 2.4s ease .5s; }
+.is-loaded .dial .d-ring--draw { stroke-dashoffset: 0; }
+.is-loaded .dial .d-rosette { opacity: 1; }
+.is-loaded .dial .hand--h { transform: rotate(var(--h, 305deg)); }
+.is-loaded .dial .hand--m { transform: rotate(var(--m, 60deg)); }
+@keyframes sweep { to { transform: rotate(360deg); } }
+
+.js .rise { opacity: 0; transform: translateY(16px); transition: opacity 1s var(--ease), transform 1.1s var(--ease); transition-delay: calc(var(--i, 0) * 100ms + 120ms); }
+.is-loaded .rise { opacity: 1; transform: none; }
+
+/* =========================================================
+   COMPOSANTS PARTAGÉS
+   ========================================================= */
+.glass {
+  background: rgba(16, 29, 49, .5);
+  -webkit-backdrop-filter: blur(12px) saturate(130%);
+  backdrop-filter: blur(12px) saturate(130%);
+  border: 1px solid var(--trait);
+}
+.panel { padding: clamp(1.5rem, 4vw, 2.5rem); }
+.textured {
+  background:
+    repeating-radial-gradient(circle at 100% 0%, rgba(217, 192, 146, .045) 0 1px, transparent 1px 15px),
+    radial-gradient(70% 60% at 100% 0%, rgba(143, 162, 148, .07), transparent 70%),
+    var(--encre);
+}
+.sect--tight { padding: clamp(3.5rem, 8vw, 6rem) 0; }
+
+.link-btn {
+  display: inline-flex; align-items: center; gap: .45rem;
+  background: none; border: 0; padding: .4rem 0; cursor: pointer;
+  color: var(--txt-doux); font-size: .9375rem; font-weight: 400;
+  transition: color .3s;
+}
+.link-btn:hover { color: var(--laiton-clair); }
+.link-btn svg { width: 13px; height: 13px; }
+.sect--cream .link-btn { color: var(--ink-doux); }
+.sect--cream .link-btn:hover { color: var(--ink); }
+
+/* Lignes d'options (quiz) */
+.opt {
+  position: relative; width: 100%; display: grid; grid-template-columns: 1.25rem 1fr; gap: 1.1rem;
+  align-items: center; text-align: left; cursor: pointer;
+  padding: 1.2rem .25rem; background: transparent; border: 0; border-bottom: 1px solid var(--trait);
+  transition: background-color .35s var(--ease), padding-left .35s var(--ease);
+}
+.opt:hover { background: rgba(217, 192, 146, .035); padding-left: .75rem; }
+.opt[aria-checked="true"] { padding-left: .75rem; background: linear-gradient(90deg, rgba(217, 192, 146, .11), rgba(217, 192, 146, 0) 75%); }
+.opt__dot { width: 14px; height: 14px; border: 1px solid var(--laiton); border-radius: 50%; display: grid; place-items: center; }
+.opt__dot::after { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--laiton-clair); transform: scale(0); transition: transform .35s var(--ease); }
+.opt[aria-checked="true"] .opt__dot::after { transform: scale(1); }
+.opt__name { display: block; font-family: var(--serif); font-size: 1.55rem; line-height: 1.12; transition: color .3s; }
+.opt__desc { display: block; font-size: .9rem; color: var(--txt-faible); margin-top: .2rem; }
+.opt[aria-checked="true"] .opt__name { color: var(--laiton-clair); }
+
+/* Quiz pas à pas */
+.qz { max-width: 50rem; }
+.qz__top { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+.qz__sub { font-family: var(--serif); font-style: italic; font-size: 1.15rem; color: var(--laiton-clair); }
+.qz__count { font-size: .875rem; color: var(--txt-faible); }
+.qz__bar { display: grid; grid-template-columns: repeat(var(--n, 4), 1fr); gap: 6px; margin: .9rem 0 2.25rem; }
+.qz__bar span { height: 2px; background: var(--trait-fort); transition: background-color .5s var(--ease); }
+.qz__bar span.is-on { background: var(--laiton-clair); }
+.qz__bar span.is-cur { background: linear-gradient(90deg, var(--laiton-clair) 35%, var(--trait-fort) 35%); }
+.qz__body { transition: opacity .18s ease, transform .3s var(--ease); }
+.qz__body.is-out { opacity: 0; transform: translateX(-8px); }
+.qz__title { font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 300; line-height: 1.1; margin-bottom: 1.5rem; }
+.qz__title:focus { outline: none; }
+.qz__opts { border-top: 1px solid var(--trait); }
+.qz__nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 1.75rem; min-height: 2.5rem; }
+.qz__nav .btn { min-height: 2.75rem; padding: .7rem 1.4rem; }
+.qz__summary { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--trait); }
+.qz__summary li { display: grid; grid-template-columns: 1fr auto; gap: .25rem 1rem; align-items: center; padding: 1rem 0; border-bottom: 1px solid var(--trait); }
+.qz__summary small { display: block; font-size: .8125rem; color: var(--txt-faible); }
+.qz__summary strong { font-family: var(--serif); font-weight: 400; font-size: 1.35rem; }
+
+/* Puces de filtre */
+.chips { display: flex; flex-wrap: wrap; gap: .6rem; }
+.chip {
+  padding: .6rem 1.1rem; min-height: 2.6rem; border-radius: 999px; cursor: pointer;
+  background: transparent; border: 1px solid var(--trait-fort); color: var(--txt-doux);
+  font-size: .9375rem; font-weight: 400;
+  transition: background-color .3s var(--ease), color .3s, border-color .3s, transform .15s;
+}
+.chip:hover { color: var(--txt); border-color: var(--laiton-clair); }
+.chip:active { transform: scale(.97); }
+.chip[aria-pressed="true"], .chip[aria-checked="true"] { background: var(--laiton-clair); border-color: var(--laiton-clair); color: var(--nuit); }
+.chip small { margin-left: .35rem; opacity: .7; font-size: .8125rem; }
+
+/* Bandeau d'appel à l'action */
+.cta-band { display: grid; gap: 2rem; align-items: end; }
+.cta-band h2 { font-size: clamp(2rem, 4.8vw, 3.2rem); font-weight: 300; line-height: 1.06; max-width: 18ch; }
+.cta-band p { margin-top: 1.1rem; color: var(--ink-doux); max-width: 34rem; }
+.cta-band .row { display: flex; flex-wrap: wrap; gap: .875rem; }
+@media (min-width: 900px) { .cta-band { grid-template-columns: 1.3fr 1fr; } .cta-band .row { justify-content: flex-end; } }
+
+/* Encadré de suite (fond sombre) */
+.next-box { margin-top: 2.5rem; padding: 1.75rem; border: 1px solid var(--trait-fort); display: grid; gap: 1.25rem; align-items: center; }
+.next-box__title { font-family: var(--serif); font-size: 1.5rem; line-height: 1.2; }
+.next-box p + p { margin-top: .4rem; color: var(--txt-doux); font-size: .9375rem; }
+.next-box .row { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; }
+@media (min-width: 900px) { .next-box { grid-template-columns: 1fr auto; } }
+
+.toast {
+  position: fixed; left: 50%; bottom: 1.5rem; z-index: 60; transform: translate(-50%, 20px);
+  padding: .8rem 1.3rem; background: var(--laiton-clair); color: var(--nuit); font-size: .9375rem; font-weight: 400;
+  opacity: 0; pointer-events: none; transition: opacity .3s, transform .4s var(--ease);
+}
+.toast.is-on { opacity: 1; transform: translate(-50%, 0); }
+
+/* Correctifs transverses */
+[hidden] { display: none !important; }
+.brand__name { white-space: nowrap; }
+@media (max-width: 420px) { .brand__name { font-size: 1.05rem; } .brand svg { width: 28px; height: 28px; } .hdr__actions { gap: .5rem; } }
+
+/* =========================================================
+   PROPRE À CETTE PAGE
+   ========================================================= */
+
+.offers { display: grid; gap: 0; }
+.offer {
+  position: relative; display: flex; flex-direction: column;
+  padding: 2.75rem 0; border-top: 1px solid var(--trait);
+  transition: background-color .5s var(--ease);
+}
+.offer:last-child { border-bottom: 1px solid var(--trait); }
+.offer__flag {
+  display: none; position: absolute; top: -1px; left: 0; right: 0;
+  border-top: 2px solid var(--laiton-clair); padding-top: .7rem;
+  font-family: var(--serif); font-style: italic; font-size: 1.05rem; color: var(--laiton-clair);
+}
+.offer.is-suggested .offer__flag { display: block; }
+.offer.is-suggested { padding-top: 4.25rem; }
+.offer__tier { font-family: var(--serif); font-style: italic; font-size: 1.15rem; color: var(--txt-faible); }
+.offer__name { margin-top: .4rem; font-size: clamp(2rem, 4vw, 2.5rem); font-weight: 300; line-height: 1.08; min-height: 2.2em; }
+.offer__price { margin-top: 1.5rem; display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem .6rem; }
+.offer__amount { font-family: var(--serif); font-size: clamp(2.3rem, 5vw, 3rem); line-height: 1; color: var(--laiton-clair); }
+.offer__period { font-size: .9375rem; color: var(--txt-faible); }
+.offer__desc { margin-top: 1.25rem; color: var(--txt-doux); max-width: 30rem; }
+.offer__feats { list-style: none; margin: 1.75rem 0 2.25rem; padding: 0; flex: 1; }
+.offer__feats li { position: relative; padding: .7rem 0 .7rem 1.5rem; border-top: 1px solid var(--trait); font-size: .9688rem; }
+.offer__feats li::before { content: ""; position: absolute; left: .1rem; top: 1.3rem; width: .55rem; height: 1px; background: var(--laiton-clair); }
+.offer__feats li:first-child { border-top: 0; }
+.offer[data-offer="global"] .offer__feats li:first-child { font-weight: 400; color: var(--laiton-clair); }
+.offer__btn { align-self: flex-start; }
+
+@media (min-width: 1040px) {
+  .offers { grid-template-columns: repeat(3, 1fr); }
+  .offer, .offer.is-suggested { padding: 4.5rem 2.5rem 3rem; border-top: 0; border-bottom: 0 !important; border-left: 1px solid var(--trait); }
+  .offer__name { min-height: 3.3em; }
+  .offer:first-child { border-left: 0; padding-left: 0; }
+  .offer:last-child { padding-right: 0; }
+  .offer.is-suggested { background: linear-gradient(180deg, rgba(217, 192, 146, .07), transparent 60%); }
+  .offer__flag { left: 2.5rem; right: 2.5rem; }
+  .offer:first-child .offer__flag { left: 0; }
+  .offer:last-child .offer__flag { right: 0; }
+  .offer__btn { align-self: stretch; }
+}
+
+/* =========================================================
+   APPARITIONS & PRÉFÉRENCES DE MOUVEMENT
+   ========================================================= */
+.js .reveal { opacity: 0; transform: translateY(14px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+.js .reveal.is-in { opacity: 1; transform: none; }
+main { transition: opacity .18s ease; }
+body.is-switching main { opacity: .35; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; transition-delay: 0s !important; }
+  .js .reveal, .js .rise { opacity: 1; transform: none; }
+  .dial .hand--s { animation: none; }
+}
+
+</style>
+</head>
+
+<body data-page="programmes">
+<a class="skip" href="#contenu" data-i18n="skip">Aller au contenu</a>
+
+<!-- ========================= EN-TÊTE ========================= -->
+<header class="hdr" id="hdr">
+  <div class="wrap hdr__in">
+    <a href="index.html" class="brand" aria-label="Executive Wellness Club">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <circle cx="16" cy="16" r="15" fill="none" stroke="#B8975F" stroke-width=".8"/>
+        <circle cx="16" cy="16" r="11.5" fill="none" stroke="#B8975F" stroke-width=".5" opacity=".5"/>
+        <path d="M16 16 L16 6.5" stroke="#D9C092" stroke-width="1.1"/>
+        <path d="M16 16 L22.5 12" stroke="#D9C092" stroke-width="1.4"/>
+        <circle cx="16" cy="16" r="1.4" fill="#D9C092"/>
+      </svg>
+      <span>
+        <span class="brand__name">Executive Wellness</span>
+        <span class="brand__sub">Club</span>
+      </span>
+    </a>
+
+    <nav class="nav" aria-label="Navigation principale" data-i18n-aria="nav.aria">
+      <a href="index.html#manifeste" data-nav="manifeste" data-i18n="nav.philo">Philosophie</a>
+      <a href="index.html#piliers" data-nav="piliers" data-i18n="nav.pillars">Les trois piliers</a>
+      <div class="tools" id="tools">
+        <button class="tools__btn" id="tools-btn" type="button" aria-expanded="false" aria-controls="tools-panel">
+          <span data-i18n="nav.tools">Outils</span>
+          <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5 6 8l4-3.5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
+        </button>
+        <div class="tools__panel" id="tools-panel">
+          <a href="coach.html" data-page-link="coach" data-i18n="tools.coach">Mon espace coach</a>
+          <a href="index.html#calculateur-calories" data-i18n="tools.calc">Calculateur de calories</a>
+          <a href="programmesportif.html" data-page-link="sport" data-i18n="tools.sport">Programme sportif</a>
+          <a href="recettes.html" data-page-link="recettes" data-i18n="tools.recipes">Recettes et courses</a>
+          <a href="routine-beaute.html" data-page-link="routine" data-i18n="tools.beauty">Ma routine beauté</a>
+          <a href="soinsesthetiques.html" data-page-link="soins" data-i18n="tools.care">Guide des soins</a>
+          <a href="peptides.html" data-page-link="peptides" data-i18n="tools.peptides">Guide des peptides</a>
+        </div>
+      </div>
+      <a href="programmes.html" data-page-link="programmes" data-i18n="nav.programmes">Programmes</a>
+    </nav>
+
+    <div class="hdr__actions">
+      <div class="lang" role="group" aria-label="Langue" data-i18n-aria="lang.aria" data-lang="fr">
+        <span class="lang__thumb" aria-hidden="true"></span>
+        <button type="button" data-set-lang="fr" aria-pressed="true" aria-label="Français" lang="fr">FR</button>
+        <button type="button" data-set-lang="en" aria-pressed="false" aria-label="English" lang="en">EN</button>
+      </div>
+      <a href="coach.html" data-page-link="coach" class="btn btn--line hdr__cta" data-i18n="nav.cta">Mon diagnostic</a>
+      <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="mnav" aria-label="Ouvrir le menu" data-i18n-aria="menu.open">
+        <span class="burger__lines"><span></span><span></span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Menu mobile -->
+<div class="mnav" id="mnav" aria-hidden="true">
+  <nav class="mnav__main" aria-label="Navigation mobile" data-i18n-aria="nav.aria.mobile">
+    <a href="index.html#manifeste" data-i18n="nav.philo">Philosophie</a>
+    <a href="index.html#piliers" data-i18n="nav.pillars">Les trois piliers</a>
+    <a href="index.html#objectif-quiz" data-i18n="nav.diag">Diagnostic</a>
+    <a href="programmes.html" data-page-link="programmes" data-i18n="nav.programmes">Programmes</a>
+    <a href="index.html#contact" data-i18n="nav.contact">Contact</a>
+  </nav>
+  <div class="mnav__tools">
+    <a href="coach.html" data-page-link="coach" data-i18n="tools.coach">Mon espace coach</a>
+          <a href="index.html#calculateur-calories" data-i18n="tools.calc">Calculateur de calories</a>
+    <a href="programmesportif.html" data-page-link="sport" data-i18n="tools.sport">Programme sportif</a>
+    <a href="recettes.html" data-page-link="recettes" data-i18n="tools.recipes">Recettes et courses</a>
+    <a href="routine-beaute.html" data-page-link="routine" data-i18n="tools.beauty">Ma routine beauté</a>
+    <a href="soinsesthetiques.html" data-page-link="soins" data-i18n="tools.care">Guide des soins</a>
+          <a href="peptides.html" data-page-link="peptides" data-i18n="tools.peptides">Guide des peptides</a>
+  </div>
+  <a href="coach.html" data-page-link="coach" class="btn btn--brass" data-i18n="cta.start">Commencer mon diagnostic</a>
+</div>
+
+<main id="contenu">
+<section class="phero" id="haut">
+  <div class="phero__dial" aria-hidden="true">
+    <svg class="dial" data-dial viewBox="0 0 400 400" style="--h:330deg;--m:90deg">
+      <g class="d-rosette"></g>
+      <circle class="d-ring d-ring--draw" cx="200" cy="200" r="190"/>
+      <circle class="d-faint" cx="200" cy="200" r="184"/>
+      <circle class="d-faint" cx="200" cy="200" r="122"/>
+      <circle class="d-faint" cx="200" cy="200" r="34"/>
+      <g class="d-ticks"></g>
+      <path class="hand hand--h" d="M200 216 Q194.5 168 200 104 Q205.5 168 200 216 Z"/>
+      <path class="hand hand--m" d="M200 218 Q196 160 200 46 Q204 160 200 218 Z"/>
+      <g class="hand hand--s"><line x1="200" y1="236" x2="200" y2="30"/><circle cx="200" cy="226" r="4.5"/></g>
+      <circle class="d-cap" cx="200" cy="200" r="4"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <a class="phero__back rise" style="--i:0" href="index.html"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M7.5 2 3.5 6l4 4" fill="none" stroke="currentColor" stroke-width="1.2"/></svg><span data-i18n="back.home">Retour à l’accueil</span></a>
+    <span class="label rise" style="--i:1" data-i18n="hero.label">Accompagnement sur-mesure</span>
+    <h1><span class="line rise" style="--i:2" data-i18n="hero.l1">Trois formules,</span><span class="line line--indent rise" style="--i:3" data-i18n="hero.l2">une même exigence.</span></h1>
+    <p class="phero__lead rise" style="--i:5" data-i18n="hero.lead">Des programmes clairs et évolutifs pour investir sereinement dans votre longévité. Commencez là où vous en êtes, montez en puissance quand vous le souhaitez.</p>
+    <p class="phero__note rise" style="--i:6"><span data-i18n="hero.notePre">Pas encore sûr(e) de votre formule ?</span> <a class="link" href="index.html#objectif-quiz" data-i18n="hero.noteLink">Faites le diagnostic en trois minutes</a></p>
+  </div>
+</section>
+
+<section class="sect offers-sect textured" id="programmes">
+  <div class="wrap offers">
+    <article class="offer reveal" id="offre-guide" data-offer="guide">
+        <p class="offer__flag" data-i18n="suggested">Recommandée pour vous</p>
+        <span class="offer__tier" data-i18n="o.guide.tier">Autonomie et fondations</span>
+        <h2 class="offer__name" data-i18n="o.guide.name">Le Guide stratégique</h2>
+        <p class="offer__price"><span class="offer__amount" data-i18n="o.guide.amount">30 €</span><span class="offer__period" data-i18n="o.guide.period">achat unique</span></p>
+        <p class="offer__desc" data-i18n="o.guide.desc">Le protocole fondamental, à suivre en autonomie, pour poser les premières bases solides de votre vitalité.</p>
+        <ul class="offer__feats"><li data-i18n="o.guide.f1">Conseils fondamentaux de longévité</li><li data-i18n="o.guide.f2">Principes nutritionnels clés</li><li data-i18n="o.guide.f3">Routines de soins de peau essentielles</li><li data-i18n="o.guide.f4">Bases de programmation d’entraînement</li></ul>
+        <button type="button" class="btn btn--line offer__btn" data-choose="guide" data-i18n="o.guide.btn">Obtenir le Guide</button>
+      </article>
+    <article class="offer reveal" id="offre-individuel" data-offer="individuel">
+        <p class="offer__flag" data-i18n="suggested">Recommandée pour vous</p>
+        <span class="offer__tier" data-i18n="o.individuel.tier">Suivi individuel</span>
+        <h2 class="offer__name" data-i18n="o.individuel.name">Le Programme individuel</h2>
+        <p class="offer__price"><span class="offer__amount" data-i18n="o.individuel.amount">À partir de 149 €</span><span class="offer__period" data-i18n="o.individuel.period">par mois</span></p>
+        <p class="offer__desc" data-i18n="o.individuel.desc">Un accompagnement sur-mesure, fondé sur vos données biologiques réelles et une programmation qui évolue avec vous.</p>
+        <ul class="offer__feats"><li data-i18n="o.individuel.f1">Évaluation biologique initiale, sur la base d’un bilan sanguin</li><li data-i18n="o.individuel.f2">Programmation sportive et nutritionnelle ajustée chaque mois</li><li data-i18n="o.individuel.f3">Sélection et gestion de votre plan de repas optimisé</li><li data-i18n="o.individuel.f4">Suivi régulier et adaptation continue des objectifs</li></ul>
+        <button type="button" class="btn btn--brass offer__btn" data-choose="individuel" data-i18n="o.individuel.btn">Commencer mon programme</button>
+      </article>
+    <article class="offer reveal" id="offre-global" data-offer="global">
+        <p class="offer__flag" data-i18n="suggested">Recommandée pour vous</p>
+        <span class="offer__tier" data-i18n="o.global.tier">Prise en charge totale</span>
+        <h2 class="offer__name" data-i18n="o.global.name">Le Programme global, santé et esthétique</h2>
+        <p class="offer__price"><span class="offer__amount" data-i18n="o.global.amount">À partir de 399 €</span><span class="offer__period" data-i18n="o.global.period">par mois</span></p>
+        <p class="offer__desc" data-i18n="o.global.desc">L’expérience la plus complète : performance biologique, cosméceutique avancée et planification de vos soins.</p>
+        <ul class="offer__feats"><li data-i18n="o.global.f1">Tout le contenu du Programme individuel</li><li data-i18n="o.global.f2">Expédition mensuelle de votre routine cosméceutique : formules aux peptides, soins ciblés</li><li data-i18n="o.global.f3">Prise en charge et planification de vos soins et protocoles esthétiques recommandés</li><li data-i18n="o.global.f4">Accès prioritaire aux innovations et futurs privilèges du club</li></ul>
+        <button type="button" class="btn btn--brass offer__btn" data-choose="global" data-i18n="o.global.btn">Rejoindre le Programme global</button>
+      </article>
+  </div>
+</section>
+
+<section class="sect sect--cream sect--tight">
+  <div class="wrap cta-band reveal">
+    <div>
+      <h2 data-i18n="band.title">Une question avant de choisir ?</h2>
+      <p data-i18n="band.text">Décrivez-nous vos objectifs : nous vous orientons vers la formule la plus juste, sans engagement.</p>
+    </div>
+    <div class="row">
+      <a class="btn btn--ink" href="index.html#contact" data-i18n="band.contact">Nous écrire</a>
+      <a class="btn btn--ink-line" href="index.html#objectif-quiz" data-i18n="band.diag">Faire le diagnostic</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="ftr">
+  <div class="wrap ftr__in">
+    <a href="index.html" class="brand" aria-label="Executive Wellness Club">
+      <span><span class="brand__name">Executive Wellness Club</span><span class="brand__sub" data-i18n="ft.tag">Toulouse</span></span>
+    </a>
+    <nav aria-label="Liens de pied de page" data-i18n-aria="ft.aria">
+      <a href="index.html#manifeste" data-i18n="nav.philo">Philosophie</a>
+      <a href="programmes.html" data-page-link="programmes" data-i18n="nav.programmes">Programmes</a>
+      <a href="index.html#contact" data-i18n="nav.contact">Contact</a>
+    </nav>
+    <p>© 2026 Executive Wellness Club. <span data-i18n="ft.rights">Tous droits réservés.</span></p>
+  </div>
+</footer>
+
+<script>
+/* =========================================================
+   SOCLE COMMUN EXECUTIVE WELLNESS CLUB
+   Langue FR/EN, en-tête, menus, cadran, quiz pas à pas.
+   ========================================================= */
+(() => {
+  'use strict';
+  const $ = (s, c = document) => c.querySelector(s);
+  const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const safe = (fn, fallback = null) => { try { return fn(); } catch (e) { return fallback; } };
+  const local = { get: k => safe(() => localStorage.getItem(k)), set: (k, v) => safe(() => localStorage.setItem(k, v)) };
+  const sess = {
+    get: k => safe(() => sessionStorage.getItem(k)),
+    set: (k, v) => safe(() => sessionStorage.setItem(k, v)),
+    del: k => safe(() => sessionStorage.removeItem(k)),
+    json: k => safe(() => JSON.parse(sessionStorage.getItem(k) || 'null')),
+  };
+  const esc = v => String(v).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+  const dict = {
+    fr: {
+      'skip': 'Aller au contenu',
+      'nav.aria': 'Navigation principale',
+      'nav.aria.mobile': 'Navigation mobile',
+      'nav.philo': 'Philosophie',
+      'nav.pillars': 'Les trois piliers',
+      'nav.tools': 'Outils',
+      'nav.programmes': 'Programmes',
+      'nav.diag': 'Diagnostic',
+      'nav.contact': 'Contact',
+      'nav.cta': 'Mon diagnostic',
+      'tools.coach': 'Mon espace coach',
+      'tools.calc': 'Calculateur de calories',
+      'tools.sport': 'Programme sportif',
+      'tools.recipes': 'Recettes et courses',
+      'tools.beauty': 'Ma routine beauté',
+      'tools.care': 'Guide des soins',
+      'tools.peptides': 'Guide des peptides',
+      'lang.aria': 'Langue',
+      'menu.open': 'Ouvrir le menu',
+      'menu.close': 'Fermer le menu',
+      'cta.start': 'Commencer mon diagnostic',
+      'back.home': 'Retour à l\u2019accueil',
+      'ft.tag': 'Toulouse',
+      'ft.aria': 'Liens de pied de page',
+      'ft.rights': 'Tous droits réservés.',
+      'common.prev': 'Précédent',
+      'common.next': 'Continuer',
+      'common.restart': 'Recommencer',
+      'common.change': 'Modifier',
+      'common.stepof': 'Étape {n} sur {total}',
+      'common.done': 'Terminé',
+      'common.summary': 'Vos réponses',
+    },
+    en: {
+      'skip': 'Skip to content',
+      'nav.aria': 'Main navigation',
+      'nav.aria.mobile': 'Mobile navigation',
+      'nav.philo': 'Philosophy',
+      'nav.pillars': 'The three pillars',
+      'nav.tools': 'Tools',
+      'nav.programmes': 'Programmes',
+      'nav.diag': 'Assessment',
+      'nav.contact': 'Contact',
+      'nav.cta': 'My assessment',
+      'tools.coach': 'My coach space',
+      'tools.calc': 'Calorie calculator',
+      'tools.sport': 'Training programme',
+      'tools.recipes': 'Recipes and groceries',
+      'tools.beauty': 'My beauty routine',
+      'tools.care': 'Treatment guide',
+      'tools.peptides': 'Peptide guide',
+      'lang.aria': 'Language',
+      'menu.open': 'Open menu',
+      'menu.close': 'Close menu',
+      'cta.start': 'Start my assessment',
+      'back.home': 'Back to home',
+      'ft.tag': 'Toulouse',
+      'ft.aria': 'Footer links',
+      'ft.rights': 'All rights reserved.',
+      'common.prev': 'Back',
+      'common.next': 'Continue',
+      'common.restart': 'Start again',
+      'common.change': 'Change',
+      'common.stepof': 'Step {n} of {total}',
+      'common.done': 'Complete',
+      'common.summary': 'Your answers',
+    },
+  };
+
+  let lang = 'fr';
+  const listeners = [];
+
+  const t = (key, vars) => {
+    let s = dict[lang][key];
+    if (s == null) s = dict.fr[key];
+    if (s == null) return key;
+    return vars ? s.replace(/\{(\w+)\}/g, (m, v) => (v in vars ? vars[v] : m)) : s;
+  };
+  const L = o => (o == null ? '' : typeof o === 'string' ? o : (o[lang] != null ? o[lang] : o.fr));
+  const locale = () => (lang === 'fr' ? 'fr-FR' : 'en-GB');
+  const fmt = (n, max = 0) => new Intl.NumberFormat(locale(), { maximumFractionDigits: max }).format(n);
+  const pct = n => (lang === 'fr' ? `${n}\u00a0%` : `${n}%`);
+
+  function translateDom() {
+    $$('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
+    $$('[data-i18n-ph]').forEach(el => { el.placeholder = t(el.dataset.i18nPh); });
+    $$('[data-i18n-aria]').forEach(el => el.setAttribute('aria-label', t(el.dataset.i18nAria)));
+    if (dict[lang]['meta.title']) document.title = t('meta.title');
+    const meta = $('meta[name="description"]');
+    if (meta && dict[lang]['meta.desc']) meta.content = t('meta.desc');
+    $$('.lang').forEach(g => {
+      g.dataset.lang = lang;
+      $$('button', g).forEach(b => b.setAttribute('aria-pressed', String(b.dataset.setLang === lang)));
+    });
+    const burger = $('#burger');
+    if (burger) burger.setAttribute('aria-label', t(burger.getAttribute('aria-expanded') === 'true' ? 'menu.close' : 'menu.open'));
+    listeners.forEach(fn => fn(lang));
+  }
+
+  function setLang(next, instant) {
+    if (!dict[next]) return;
+    lang = next;
+    document.documentElement.lang = next;
+    local.set('ewc_lang', next);
+    if (instant || reduced.matches) { translateDom(); return; }
+    document.body.classList.add('is-switching');
+    setTimeout(() => { translateDom(); document.body.classList.remove('is-switching'); }, 150);
+  }
+
+  function goTo(id, focusEl) {
+    const el = typeof id === 'string' ? document.getElementById(id) : id;
+    if (!el) return;
+    el.scrollIntoView({ behavior: reduced.matches ? 'auto' : 'smooth', block: 'start' });
+    if (focusEl) setTimeout(() => focusEl.focus({ preventScroll: true }), reduced.matches ? 0 : 650);
+  }
+
+  function prefillContact(programme, objectif) {
+    sess.set('ewc_contactPrefill', JSON.stringify({ programme, objectif }));
+    window.location.href = 'index.html#contact';
+  }
+
+  let toastTimer;
+  function toast(msg) {
+    let el = $('#toast');
+    if (!el) { el = document.createElement('div'); el.id = 'toast'; el.className = 'toast'; el.setAttribute('role', 'status'); document.body.appendChild(el); }
+    el.textContent = msg;
+    el.classList.add('is-on');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => el.classList.remove('is-on'), 2200);
+  }
+
+  /* ---------- Groupes radio accessibles ---------- */
+  function markRadio(group, value) {
+    const items = $$('[role="radio"]', group);
+    const hasValue = items.some(it => it.dataset.value === value);
+    items.forEach((it, i) => {
+      const on = it.dataset.value === value;
+      it.setAttribute('aria-checked', String(on));
+      it.tabIndex = on || (!hasValue && i === 0) ? 0 : -1;
+    });
+  }
+  function radioGroup(group, onSelect) {
+    group.addEventListener('click', e => {
+      const it = e.target.closest('[role="radio"]');
+      if (it && group.contains(it)) onSelect(it.dataset.value, false);
+    });
+    group.addEventListener('keydown', e => {
+      const dir = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
+      if (!dir) return;
+      const items = $$('[role="radio"]', group);
+      const i = items.indexOf(document.activeElement);
+      if (i < 0) return;
+      e.preventDefault();
+      const next = items[(i + dir + items.length) % items.length];
+      next.focus();
+      onSelect(next.dataset.value, true);
+    });
+  }
+
+  /* ---------- Quiz pas à pas ---------- */
+  const ICON_BACK = '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M7.5 2 3.5 6l4 4" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>';
+  const ICON_RESTART = '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.2 6a3.8 3.8 0 1 0 1.1-2.7M2 1.5v2.3h2.3" fill="none" stroke="currentColor" stroke-width="1.1"/></svg>';
+
+  function quiz(cfg) {
+    const root = cfg.root;
+    const steps = cfg.steps;
+    const st = { i: 0, answers: Object.assign({}, cfg.initial || {}), done: false };
+    root.classList.add('qz');
+    root.style.setProperty('--n', steps.length);
+    root.innerHTML = `
+      <div class="qz__top"><span class="qz__sub"></span><span class="qz__count"></span></div>
+      <div class="qz__bar" aria-hidden="true">${steps.map(() => '<span></span>').join('')}</div>
+      <div class="qz__body">
+        <h3 class="qz__title" tabindex="-1"></h3>
+        <div class="qz__opts" role="radiogroup"></div>
+        <ul class="qz__summary" hidden></ul>
+      </div>
+      <div class="qz__nav">
+        <button type="button" class="link-btn qz__back">${ICON_BACK}<span></span></button>
+        <span class="qz__right">
+          <button type="button" class="btn btn--brass qz__next"></button>
+          <button type="button" class="link-btn qz__restart">${ICON_RESTART}<span></span></button>
+        </span>
+      </div>`;
+    const sub = $('.qz__sub', root), count = $('.qz__count', root), bars = $$('.qz__bar span', root);
+    const body = $('.qz__body', root), title = $('.qz__title', root), opts = $('.qz__opts', root), summary = $('.qz__summary', root);
+    const back = $('.qz__back', root), next = $('.qz__next', root), restart = $('.qz__restart', root);
+    const optLabel = (step, value) => { const o = step.options.find(x => x.value === value); return o ? L(o.label) : ''; };
+
+    function fill() {
+      $('span', back).textContent = t('common.prev');
+      next.textContent = t('common.next');
+      $('span', restart).textContent = t('common.restart');
+      bars.forEach((b, j) => {
+        b.classList.toggle('is-on', st.done || j < st.i);
+        b.classList.toggle('is-cur', !st.done && j === st.i);
+      });
+      if (st.done) {
+        sub.textContent = t(cfg.doneLabel);
+        count.textContent = t('common.done');
+        title.textContent = t('common.summary');
+        title.id = title.id || `qz-title-${Math.random().toString(36).slice(2, 7)}`;
+        opts.hidden = true;
+        summary.hidden = false;
+        summary.innerHTML = steps.map((s, j) => `
+          <li><span><small>${esc(L(s.sub))}</small><strong>${esc(optLabel(s, st.answers[s.key]))}</strong></span>
+          <button type="button" class="link-btn" data-goto="${j}">${esc(t('common.change'))}</button></li>`).join('');
+        back.hidden = true;
+        next.hidden = true;
+        restart.hidden = false;
+        return;
+      }
+      const step = steps[st.i];
+      sub.textContent = L(step.sub);
+      count.textContent = t('common.stepof', { n: st.i + 1, total: steps.length });
+      title.textContent = L(step.title);
+      if (!title.id) title.id = `qz-title-${Math.random().toString(36).slice(2, 7)}`;
+      opts.setAttribute('aria-labelledby', title.id);
+      opts.hidden = false;
+      summary.hidden = true;
+      opts.innerHTML = step.options.map(o => `
+        <button type="button" class="opt" role="radio" aria-checked="false" data-value="${esc(o.value)}">
+          <span class="opt__dot" aria-hidden="true"></span>
+          <span><span class="opt__name">${esc(L(o.label))}</span>${o.desc ? `<span class="opt__desc">${esc(L(o.desc))}</span>` : ''}</span>
+        </button>`).join('');
+      markRadio(opts, st.answers[step.key]);
+      back.hidden = st.i === 0;
+      next.hidden = !st.answers[step.key];
+      restart.hidden = Object.keys(st.answers).length === 0 || st.i === 0 && !st.answers[step.key];
+    }
+
+    function render(animate, focus) {
+      const run = () => { fill(); if (focus) title.focus({ preventScroll: true }); };
+      if (animate && !reduced.matches) {
+        body.classList.add('is-out');
+        setTimeout(() => { run(); body.classList.remove('is-out'); }, 180);
+      } else run();
+    }
+
+    function advance(focus) {
+      if (st.i >= steps.length - 1) {
+        st.done = true;
+        render(true, focus);
+        cfg.onDone(st.answers, true);
+      } else {
+        st.i++;
+        render(true, focus);
+      }
+    }
+
+    let advTimer;
+    radioGroup(opts, (value, fromKeyboard) => {
+      const step = steps[st.i];
+      st.answers[step.key] = value;
+      markRadio(opts, value);
+      next.hidden = false;
+      restart.hidden = false;
+      if (fromKeyboard) return; // au clavier, on confirme avec « Continuer »
+      clearTimeout(advTimer);
+      advTimer = setTimeout(() => advance(false), reduced.matches ? 0 : 260);
+    });
+    next.addEventListener('click', () => advance(true));
+    back.addEventListener('click', () => { if (st.i > 0) { st.i--; render(true, true); } });
+    restart.addEventListener('click', () => {
+      st.i = 0; st.answers = {}; st.done = false;
+      if (cfg.onReset) cfg.onReset();
+      render(true, true);
+    });
+    summary.addEventListener('click', e => {
+      const b = e.target.closest('[data-goto]');
+      if (!b) return;
+      st.done = false; st.i = Number(b.dataset.goto);
+      if (cfg.onReset) cfg.onReset();
+      render(true, true);
+      goTo(root);
+    });
+
+    listeners.push(() => { fill(); if (st.done) cfg.onDone(st.answers, false); });
+    fill();
+    return st;
+  }
+
+  /* ---------- Cadran ---------- */
+  function buildDials() {
+    const NS = 'http://www.w3.org/2000/svg';
+    $$('[data-dial]').forEach(svg => {
+      const rosette = $('.d-rosette', svg), ticks = $('.d-ticks', svg);
+      if (rosette && !rosette.childNodes.length) {
+        for (let i = 0; i < 36; i++) {
+          const e = document.createElementNS(NS, 'ellipse');
+          e.setAttribute('cx', 200); e.setAttribute('cy', 200); e.setAttribute('rx', 118); e.setAttribute('ry', 44);
+          e.setAttribute('transform', `rotate(${i * 5} 200 200)`);
+          rosette.appendChild(e);
+        }
+      }
+      if (ticks && !ticks.childNodes.length) {
+        for (let i = 0; i < 60; i++) {
+          const major = i % 5 === 0, a = i * 6 * Math.PI / 180, r1 = major ? 164 : 174, r2 = 182;
+          const l = document.createElementNS(NS, 'line');
+          l.setAttribute('x1', (200 + r1 * Math.sin(a)).toFixed(2)); l.setAttribute('y1', (200 - r1 * Math.cos(a)).toFixed(2));
+          l.setAttribute('x2', (200 + r2 * Math.sin(a)).toFixed(2)); l.setAttribute('y2', (200 - r2 * Math.cos(a)).toFixed(2));
+          l.setAttribute('class', major ? 'd-tick d-tick--major' : 'd-tick');
+          ticks.appendChild(l);
+        }
+      }
+    });
+  }
+
+  /* ---------- En-tête et menus ---------- */
+  function initHeader() {
+    const hdr = $('#hdr'), burger = $('#burger'), mnav = $('#mnav'), tools = $('#tools'), toolsBtn = $('#tools-btn');
+    const onScroll = () => hdr.classList.toggle('is-scrolled', window.scrollY > 24);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    const setMenu = open => {
+      burger.setAttribute('aria-expanded', String(open));
+      burger.setAttribute('aria-label', t(open ? 'menu.close' : 'menu.open'));
+      mnav.classList.toggle('is-open', open);
+      mnav.setAttribute('aria-hidden', String(!open));
+      hdr.classList.toggle('is-menu', open);
+      document.body.classList.toggle('no-scroll', open);
+    };
+    burger.addEventListener('click', () => setMenu(burger.getAttribute('aria-expanded') !== 'true'));
+    $$('a', mnav).forEach(a => a.addEventListener('click', () => setMenu(false)));
+
+    const setTools = open => { tools.classList.toggle('is-open', open); toolsBtn.setAttribute('aria-expanded', String(open)); };
+    toolsBtn.addEventListener('click', e => { e.stopPropagation(); setTools(!tools.classList.contains('is-open')); });
+    document.addEventListener('click', e => { if (!tools.contains(e.target)) setTools(false); });
+
+    document.addEventListener('keydown', e => {
+      if (e.key !== 'Escape') return;
+      if (tools.classList.contains('is-open')) { setTools(false); toolsBtn.focus(); }
+      if (mnav.classList.contains('is-open')) { setMenu(false); burger.focus(); }
+    });
+    window.addEventListener('resize', () => { if (window.innerWidth >= 1040 && mnav.classList.contains('is-open')) setMenu(false); });
+
+    const page = document.body.dataset.page;
+    $$('[data-page-link]').forEach(a => { if (a.dataset.pageLink === page) a.setAttribute('aria-current', 'page'); });
+
+    $$('[data-set-lang]').forEach(b => b.addEventListener('click', () => { if (b.dataset.setLang !== lang) setLang(b.dataset.setLang); }));
+  }
+
+  function initReveal() {
+    const items = $$('.reveal');
+    if ('IntersectionObserver' in window && !reduced.matches) {
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('is-in'); obs.unobserve(en.target); } });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      items.forEach(el => obs.observe(el));
+    } else items.forEach(el => el.classList.add('is-in'));
+  }
+
+  function init() {
+    initHeader();
+    buildDials();
+    initReveal();
+    const fromUrl = safe(() => new URLSearchParams(location.search).get('lang'));
+    const stored = local.get('ewc_lang');
+    const nav = (navigator.language || 'fr').toLowerCase();
+    setLang([fromUrl, stored].find(l => l === 'fr' || l === 'en') || (nav.startsWith('en') ? 'en' : 'fr'), true);
+    const loaded = () => document.body.classList.add('is-loaded');
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => requestAnimationFrame(loaded));
+    setTimeout(loaded, 900);
+  }
+
+  window.EWC = {
+    get lang() { return lang; },
+    add(d) { Object.assign(dict.fr, d.fr); Object.assign(dict.en, d.en); },
+    t, L, fmt, pct, esc, $, $$, reduced, sess, local, safe,
+    onLang(fn) { listeners.push(fn); },
+    goTo, prefillContact, toast, markRadio, radioGroup, quiz, init,
+  };
+})();
+
+</script>
+<script>
+(() => {
+  'use strict';
+  const { t, L, $, $$ } = EWC;
+  EWC.add({
+  "fr": {
+    "meta.title": "Nos programmes | Executive Wellness Club",
+    "meta.desc": "Trois formules claires et évolutives pour investir sereinement dans votre longévité : Guide stratégique, Programme individuel, Programme global.",
+    "hero.label": "Accompagnement sur-mesure",
+    "hero.l1": "Trois formules,",
+    "hero.l2": "une même exigence.",
+    "hero.lead": "Des programmes clairs et évolutifs pour investir sereinement dans votre longévité. Commencez là où vous en êtes, montez en puissance quand vous le souhaitez.",
+    "hero.notePre": "Pas encore sûr(e) de votre formule ?",
+    "hero.noteLink": "Faites le diagnostic en trois minutes",
+    "suggested": "Recommandée pour vous",
+    "o.guide.tier": "Autonomie et fondations",
+    "o.guide.name": "Le Guide stratégique",
+    "o.guide.amount": "30 €",
+    "o.guide.period": "achat unique",
+    "o.guide.desc": "Le protocole fondamental, à suivre en autonomie, pour poser les premières bases solides de votre vitalité.",
+    "o.guide.f1": "Conseils fondamentaux de longévité",
+    "o.guide.f2": "Principes nutritionnels clés",
+    "o.guide.f3": "Routines de soins de peau essentielles",
+    "o.guide.f4": "Bases de programmation d’entraînement",
+    "o.guide.btn": "Obtenir le Guide",
+    "o.individuel.tier": "Suivi individuel",
+    "o.individuel.name": "Le Programme individuel",
+    "o.individuel.amount": "À partir de 149 €",
+    "o.individuel.period": "par mois",
+    "o.individuel.desc": "Un accompagnement sur-mesure, fondé sur vos données biologiques réelles et une programmation qui évolue avec vous.",
+    "o.individuel.f1": "Évaluation biologique initiale, sur la base d’un bilan sanguin",
+    "o.individuel.f2": "Programmation sportive et nutritionnelle ajustée chaque mois",
+    "o.individuel.f3": "Sélection et gestion de votre plan de repas optimisé",
+    "o.individuel.f4": "Suivi régulier et adaptation continue des objectifs",
+    "o.individuel.btn": "Commencer mon programme",
+    "o.global.tier": "Prise en charge totale",
+    "o.global.name": "Le Programme global, santé et esthétique",
+    "o.global.amount": "À partir de 399 €",
+    "o.global.period": "par mois",
+    "o.global.desc": "L’expérience la plus complète : performance biologique, cosméceutique avancée et planification de vos soins.",
+    "o.global.f1": "Tout le contenu du Programme individuel",
+    "o.global.f2": "Expédition mensuelle de votre routine cosméceutique : formules aux peptides, soins ciblés",
+    "o.global.f3": "Prise en charge et planification de vos soins et protocoles esthétiques recommandés",
+    "o.global.f4": "Accès prioritaire aux innovations et futurs privilèges du club",
+    "o.global.btn": "Rejoindre le Programme global",
+    "prefill.guide": "Je souhaite démarrer avec le Guide stratégique (30 €).",
+    "prefill.individuel": "Je souhaite démarrer le Programme individuel.",
+    "prefill.global": "Je souhaite rejoindre le Programme global, santé et esthétique.",
+    "band.title": "Une question avant de choisir ?",
+    "band.text": "Décrivez-nous vos objectifs : nous vous orientons vers la formule la plus juste, sans engagement.",
+    "band.contact": "Nous écrire",
+    "band.diag": "Faire le diagnostic"
+  },
+  "en": {
+    "meta.title": "Our programmes | Executive Wellness Club",
+    "meta.desc": "Three clear programmes that grow with you, to invest calmly in your longevity: Strategic Guide, Individual Programme, Global Programme.",
+    "hero.label": "Tailored guidance",
+    "hero.l1": "Three programmes,",
+    "hero.l2": "one standard.",
+    "hero.lead": "Clear programmes that grow with you, so you can invest calmly in your longevity. Start where you are, and step up whenever you are ready.",
+    "hero.notePre": "Not sure which one suits you?",
+    "hero.noteLink": "Take the three-minute assessment",
+    "suggested": "Recommended for you",
+    "o.guide.tier": "Autonomy and foundations",
+    "o.guide.name": "The Strategic Guide",
+    "o.guide.amount": "€30",
+    "o.guide.period": "one-time purchase",
+    "o.guide.desc": "The essential protocol, to follow on your own, to lay solid foundations for your vitality.",
+    "o.guide.f1": "Core longevity principles",
+    "o.guide.f2": "Key nutrition principles",
+    "o.guide.f3": "Essential skincare routines",
+    "o.guide.f4": "Training programming basics",
+    "o.guide.btn": "Get the Guide",
+    "o.individuel.tier": "One-to-one guidance",
+    "o.individuel.name": "The Individual Programme",
+    "o.individuel.amount": "From €149",
+    "o.individuel.period": "per month",
+    "o.individuel.desc": "Tailored guidance built on your real biological data, with programming that evolves with you.",
+    "o.individuel.f1": "Initial biological assessment based on a blood panel",
+    "o.individuel.f2": "Training and nutrition programming adjusted every month",
+    "o.individuel.f3": "Selection and management of your optimised meal plan",
+    "o.individuel.f4": "Regular follow-up and continuous goal adjustment",
+    "o.individuel.btn": "Start my programme",
+    "o.global.tier": "Complete care",
+    "o.global.name": "The Global Programme, health and aesthetics",
+    "o.global.amount": "From €399",
+    "o.global.period": "per month",
+    "o.global.desc": "The most complete experience: biological performance, advanced cosmeceuticals and planning of your treatments.",
+    "o.global.f1": "Everything in the Individual Programme",
+    "o.global.f2": "Your cosmeceutical routine shipped monthly: peptide formulas, targeted care",
+    "o.global.f3": "Coordination and planning of your recommended aesthetic treatments and protocols",
+    "o.global.f4": "Priority access to new services and future club privileges",
+    "o.global.btn": "Join the Global Programme",
+    "prefill.guide": "I would like to start with the Strategic Guide (€30).",
+    "prefill.individuel": "I would like to start the Individual Programme.",
+    "prefill.global": "I would like to join the Global Programme, health and aesthetics.",
+    "band.title": "A question before choosing?",
+    "band.text": "Tell us about your goals: we will point you to the programme that fits best, with no commitment.",
+    "band.contact": "Write to us",
+    "band.diag": "Take the assessment"
+  }
+});
+
+  // Choix d'une formule : préremplit le formulaire de contact de l'accueil
+  $$('[data-choose]').forEach(b => b.addEventListener('click', () => {
+    const k = b.dataset.choose;
+    EWC.prefillContact(k, t('prefill.' + k));
+  }));
+
+  // Formule suggérée depuis le diagnostic : programmes.html?offre=guide|individuel|global
+  const offre = EWC.safe(() => new URLSearchParams(location.search).get('offre'));
+  const target = offre && document.getElementById('offre-' + offre);
+  if (target) {
+    target.classList.add('is-suggested');
+    target.classList.add('is-in');
+    window.addEventListener('load', () => setTimeout(() => {
+      if (window.innerWidth < 1040) EWC.goTo(target);
+      else EWC.goTo('programmes');
+    }, 400));
+  }
+
+  EWC.init();
+})();
+</script>
+</body>
+</html>
